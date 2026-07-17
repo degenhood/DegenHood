@@ -1,0 +1,214 @@
+openapi: 3.1.0
+info:
+  title: DegenHood API
+  version: 1.0.0
+  description: >-
+    Non-custodial launch preparation for DegenHood on Robinhood Chain. The API
+    never receives private keys and never broadcasts a launch; every returned
+    transaction is unsigned and the creator wallet pays its own gas.
+servers:
+  - url: https://api.degenhood.fun
+paths:
+  /api/v1/auth/challenges:
+    post:
+      operationId: createWalletChallenge
+      summary: Create a one-time EIP-191 wallet challenge
+      description: >-
+        Initially allowlisted. The returned message binds degenhood.fun, Robinhood
+        Chain 4663, the wallet, the launch:prepare scope, issuance, expiry, and a
+        one-time nonce. The server does not ask for a transaction signature.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WalletChallengeInput'
+      responses:
+        '201':
+          description: One-time five-minute challenge created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WalletChallenge'
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '403': { description: Wallet is not in the initial developer allowlist. }
+        '429': { description: IP or wallet rate limit exceeded. }
+        '503': { description: Wallet session authentication is not configured. }
+  /api/v1/auth/sessions:
+    post:
+      operationId: createWalletSession
+      summary: Exchange an EIP-191 signature for a scoped bearer session
+      description: >-
+        Consumes the challenge on the first exchange attempt. A valid signature
+        receives a 15-minute dgn-session+jwt bearer token scoped only to
+        launch:prepare. No refresh token is issued.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WalletSessionInput'
+      responses:
+        '201':
+          description: Short-lived wallet session created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WalletSession'
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '401': { description: Challenge is invalid, expired, used, or the signature is invalid. }
+        '403': { description: Wallet is no longer in the developer allowlist. }
+        '429': { description: IP or wallet rate limit exceeded. }
+        '503': { description: Wallet session authentication is not configured. }
+  /api/v1/launch-preparations:
+    post:
+      operationId: prepareLaunch
+      summary: Mine a vanity salt and prepare unsigned factory calldata
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LaunchPreparationInput'
+      responses:
+        '200':
+          description: Exact launch request and unsigned transaction prepared successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LaunchPreparation'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          description: Missing or invalid bearer token.
+        '403':
+          description: Wallet session is no longer allowlisted.
+        '408':
+          description: The caller disconnected or preparation timed out.
+        '429':
+          description: Rate limit exceeded or the authenticated identity already has another preparation in flight.
+          headers:
+            Retry-After:
+              schema: { type: string }
+        '500':
+          description: The bounded vanity miner or preparation integrity check failed unexpectedly.
+        '503':
+          description: Factory/auth configuration unavailable or the bounded miner queue is full.
+          headers:
+            Retry-After:
+              schema: { type: string }
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: Privy access token or dgn-session+jwt
+  responses:
+    BadRequest:
+      description: Invalid launch request.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    Address:
+      type: string
+      pattern: '^0x[0-9a-fA-F]{40}$'
+    Error:
+      type: object
+      required: [error]
+      properties:
+        error: { type: string }
+    WalletChallengeInput:
+      type: object
+      additionalProperties: false
+      required: [wallet]
+      properties:
+        wallet: { $ref: '#/components/schemas/Address' }
+        scope: { type: string, const: 'launch:prepare', default: 'launch:prepare' }
+    WalletChallenge:
+      type: object
+      required: [challengeId, wallet, domain, chainId, scope, issuedAt, expiresAt, message]
+      properties:
+        challengeId: { type: string, minLength: 1 }
+        wallet: { $ref: '#/components/schemas/Address' }
+        domain: { type: string, const: degenhood.fun }
+        chainId: { type: integer, const: 4663 }
+        scope: { type: string, const: 'launch:prepare' }
+        issuedAt: { type: string, format: date-time }
+        expiresAt: { type: string, format: date-time }
+        message:
+          type: string
+          description: Exact EIP-191 plaintext message to sign externally with the listed wallet.
+    WalletSessionInput:
+      type: object
+      additionalProperties: false
+      required: [challengeId, signature]
+      properties:
+        challengeId: { type: string, minLength: 1 }
+        signature: { type: string, pattern: '^0x[0-9a-fA-F]+$' }
+    WalletSession:
+      type: object
+      required: [accessToken, tokenType, expiresIn, expiresAt, wallet, scope]
+      properties:
+        accessToken: { type: string, description: Short-lived dgn-session+jwt bearer token. }
+        tokenType: { type: string, const: Bearer }
+        expiresIn: { type: integer, const: 900 }
+        expiresAt: { type: string, format: date-time }
+        wallet: { $ref: '#/components/schemas/Address' }
+        scope: { type: string, const: 'launch:prepare' }
+    LaunchPreparationInput:
+      type: object
+      additionalProperties: false
+      required: [name, symbol, launcher, tokenAdmin, feeAdmin, beneficiary, templateId]
+      properties:
+        name: { type: string, minLength: 1, maxLength: 32 }
+        symbol: { type: string, minLength: 1, maxLength: 10 }
+        launcher: { $ref: '#/components/schemas/Address' }
+        tokenAdmin: { $ref: '#/components/schemas/Address' }
+        feeAdmin: { $ref: '#/components/schemas/Address' }
+        beneficiary: { $ref: '#/components/schemas/Address' }
+        description: { type: string }
+        website: { type: string }
+        x: { type: string }
+        telegram: { type: string }
+        contractURI: { type: string, description: Canonical metadata JSON; takes precedence over individual metadata fields. }
+        imageURI: { type: string }
+        templateId: { type: integer, minimum: 1 }
+    LaunchRequest:
+      allOf:
+        - $ref: '#/components/schemas/LaunchPreparationInput'
+        - type: object
+          required: [contractURI, imageURI, userSalt]
+          properties:
+            contractURI: { type: string }
+            imageURI: { type: string }
+            userSalt: { type: string, pattern: '^0x[0-9a-fA-F]{64}$' }
+            templateId: { type: string, pattern: '^[1-9][0-9]*$' }
+    LaunchPreparation:
+      type: object
+      required: [version, chainId, factory, request, requestDigest, predictedTokenAddress, transaction, mining]
+      properties:
+        version: { const: v4 }
+        chainId: { type: integer, const: 4663 }
+        factory: { $ref: '#/components/schemas/Address' }
+        request: { $ref: '#/components/schemas/LaunchRequest' }
+        requestDigest: { type: string, pattern: '^0x[0-9a-fA-F]{64}$' }
+        predictedTokenAddress: { $ref: '#/components/schemas/Address' }
+        transaction:
+          type: object
+          description: Unsigned creator-funded transaction. Sign and submit with the request launcher.
+          required: [to, data, value]
+          properties:
+            to: { $ref: '#/components/schemas/Address' }
+            data: { type: string, pattern: '^0x[0-9a-fA-F]+$' }
+            value: { const: '0x0' }
+        mining:
+          type: object
+          required: [suffix, queuedMs, ms]
+          properties:
+            suffix: { const: de6 }
+            queuedMs: { type: integer, minimum: 0 }
+            ms: { type: integer, minimum: 0 }

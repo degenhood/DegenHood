@@ -1,0 +1,4 @@
+interface:
+  display_name: "Prepare DegenHood Launch"
+  short_description: "Prepare and verify unsigned DegenHood launches"
+  default_prompt: "Use $prepare-degenhood-launch to prepare, verify, and simulate an unsigned DegenHood launch."

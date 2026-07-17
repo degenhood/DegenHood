@@ -1,0 +1,39 @@
+{
+  "name": "@degenhood/cli",
+  "version": "0.1.0",
+  "description": "Non-custodial DegenHood CLI for unsigned launch preparation and verification.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/degenhood/DegenHood.git",
+    "directory": "packages/cli"
+  },
+  "homepage": "https://degenhood.fun",
+  "bugs": {
+    "url": "https://github.com/degenhood/DegenHood/issues"
+  },
+  "type": "module",
+  "bin": {
+    "degenhood": "src/cli.js"
+  },
+  "files": ["src", "README.md", "LICENSE"],
+  "engines": {
+    "node": ">=20"
+  },
+  "publishConfig": {
+    "access": "public",
+    "tag": "latest"
+  },
+  "scripts": {
+    "test": "node --test"
+  },
+  "dependencies": {
+    "viem": "^2.55.0"
+  },
+  "peerDependencies": {
+    "@degenhood/sdk": "0.1.0"
+  },
+  "devDependencies": {
+    "@degenhood/sdk": "file:../sdk"
+  }
+}

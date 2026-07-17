@@ -1,0 +1,34 @@
+{
+  "name": "@degenhood/sdk",
+  "version": "0.1.0",
+  "description": "Non-custodial DegenHood launch preparation and verification for Robinhood Chain.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/degenhood/DegenHood.git",
+    "directory": "packages/sdk"
+  },
+  "homepage": "https://degenhood.fun",
+  "bugs": {
+    "url": "https://github.com/degenhood/DegenHood/issues"
+  },
+  "type": "module",
+  "exports": {
+    ".": "./src/index.js",
+    "./package.json": "./package.json"
+  },
+  "files": ["src", "README.md", "LICENSE"],
+  "engines": {
+    "node": ">=20"
+  },
+  "publishConfig": {
+    "access": "public",
+    "tag": "latest"
+  },
+  "scripts": {
+    "test": "node --test"
+  },
+  "dependencies": {
+    "viem": "^2.55.0"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "name": "Example Hood",
+  "symbol": "EXAMPLE",
+  "description": "The creator story.",
+  "website": "https://example.com",
+  "x": "@example",
+  "telegram": "https://t.me/example",
+  "imageURI": "https://images.example.com/token.png",
+  "templateId": 2
+}
