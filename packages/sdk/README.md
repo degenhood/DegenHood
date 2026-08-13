@@ -2,14 +2,19 @@
 
 Shared, non-custodial request tooling for DegenHood v4 launches on Robinhood Chain.
 
+> **Compatibility:** The published `0.1.x` line is legacy v4-factory tooling. It does not implement
+> the current production LaunchHub integration. Do not use it to construct a new production launch.
+> See [`COMPATIBILITY.md`](../../COMPATIBILITY.md).
+
 ## Install
 
 ```sh
-npm install @degenhood/sdk@0.1.0
+npm install @degenhood/sdk@0.1.0-canary.0
 ```
 
-Version `0.1.0` is the first stable package release and is published under the `latest` dist-tag.
-Access to the production launch-preparation API remains controlled and wallet-allowlisted.
+Version `0.1.0-canary.0` is a controlled early-access canary prerelease published under the
+`canary` dist-tag. The command above becomes
+available only after the DegenHood operator publishes the reviewed package.
 
 Start from
 [`examples/developer/prepare-launch.ts`](../../examples/developer/prepare-launch.ts) and
@@ -73,18 +78,66 @@ const health = await client.getHealth();
 const indexedToken = await client.getToken(preparation.predictedTokenAddress);
 ```
 
-Prepare the permissionless v4 creator-fee delivery sequence from the indexed token record:
+Prepare creator-fee delivery from the indexed token record:
 
 ```js
 const fees = await client.getFeeDeliveryPreparation(indexedToken.contract);
 client.verifyFeeDeliveryPreparation(fees);
+```
 
+For a LaunchHub token, the indexed record binds the launch record to its active template and
+resolved LP locker. The preparation contains one zero-value, unsigned transaction:
+
+```js
+// LaunchHub:
+// fees.transaction.to is the LP locker resolved from the indexed activated template.
+// fees.transaction.data encodes claimFees(indexedToken.contract).
+```
+
+The builder rejects a template that was never activated for the indexed launch, a token or module
+mismatch, and any preparation whose target, calldata, or value drifts from that indexed
+provenance. Later template deprecation blocks new launches only: tokens launched while that
+version was active remain claimable through their immutable locker. The caller cannot supply a
+recipient, amount, hook, pool, treasury, vault, or arbitrary call target.
+
+The frozen legacy v4 path remains available for existing tokens and still contains three
+zero-value, unsigned transactions:
+
+```js
 // fees.steps contains three zero-value, unsigned transactions:
 // 1. collectRewards(token)
 // 2. flushPoolFees(poolId, beneficiary)
 // 3. claimFor(beneficiary)
 ```
 
-The final FeeLocker claim is beneficiary-account scoped and can include earnings from several launches. The SDK cannot redirect funds, sign, sequence confirmations, pay gas, or broadcast.
+Both paths are permissionless and destination-bound. A FeeLocker payment is beneficiary-account
+scoped and can include earnings from several launches. The SDK cannot redirect funds, sign,
+sequence confirmations, pay gas, or broadcast.
 
-The package also exports the canonical v4 request builder, digest function, calldata encoder, fee-delivery builder/verifier, ABIs, serialiser, and zero salt constant. It never stores keys, signs messages or transactions, or broadcasts transactions.
+The package also exports the canonical v4 request builder, digest function, calldata encoder,
+legacy fee-delivery builder/verifier, LaunchHub fee-claim builder/verifier, ABIs, serialiser, and
+zero salt constant. It never stores keys, signs messages or transactions, or broadcasts
+transactions.
+
+The LaunchHub launch helpers build and verify the same direct, zero-value call used by the
+DegenHood interface:
+
+```js
+const draft = buildHubLaunchDraft({
+  domainId,
+  templateId: 2,
+  version: 1,
+  name: "Example Hood",
+  symbol: "EXAMPLE",
+  launcher: account
+});
+
+const request = buildHubLaunchRequest({ ...draft, predictedToken });
+const data = encodeHubLaunchCalldata(request);
+verifyHubLaunchPreparation(preparation);
+```
+
+The verifier binds every role, metadata field, template/version/domain, salt, empty launch data,
+predicted token, active module and shared token deployer. It rejects a non-direct target,
+non-zero value, calldata drift, a prediction outside the canonical ordering boundary or a token
+without the `…de6` suffix. It still cannot sign or submit the verified call.

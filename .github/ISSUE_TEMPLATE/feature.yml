@@ -1,0 +1,30 @@
+name: Feature proposal
+description: Propose one focused improvement to the public programmable core
+title: "[Proposal]: "
+labels: ["proposal", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Proposals should strengthen the public programmable core without weakening its non-custodial boundary.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: Who has this problem, and why does it matter?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed interface or behaviour
+      description: Describe the smallest coherent change.
+    validations:
+      required: true
+  - type: textarea
+    id: boundaries
+    attributes:
+      label: Security and compatibility boundaries
+      description: Note affected trust, signing, API, contract, package, or deployment assumptions.
+    validations:
+      required: true

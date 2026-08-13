@@ -1,6 +1,6 @@
 {
   "name": "@degenhood/sdk",
-  "version": "0.1.0",
+  "version": "0.1.0-canary.0",
   "description": "Non-custodial DegenHood launch preparation and verification for Robinhood Chain.",
   "license": "MIT",
   "repository": {
@@ -23,7 +23,7 @@
   },
   "publishConfig": {
     "access": "public",
-    "tag": "latest"
+    "tag": "canary"
   },
   "scripts": {
     "test": "node --test"

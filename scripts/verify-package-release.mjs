@@ -95,7 +95,7 @@ const pack = (packageDirectory, destination) => {
 const verifyInstalledManifest = async (project, packageName) => {
   const manifestPath = join(project, "node_modules", ...packageName.split("/"), "package.json");
   const manifest = JSON.parse(await readFile(manifestPath, "utf8"));
-  if (manifest.version !== "0.1.0") {
+  if (manifest.version !== "0.1.0-canary.0") {
     throw new Error(`${packageName} installed unexpected version ${manifest.version}`);
   }
   const sdkDependency = manifest.dependencies?.["@degenhood/sdk"];

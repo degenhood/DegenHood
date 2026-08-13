@@ -1,0 +1,1920 @@
+{
+  "schemaVersion": 1,
+  "exporterVersion": 2,
+  "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+  "policySha256": "fec2522d2b0a7be5c1e03b815fcf8915a65053fa4664d01dff78ed99b784ce1d",
+  "sources": [
+    {
+      "id": "degenetics-contracts",
+      "description": "Private canonical source for the deployed Degenetics contract graph",
+      "commits": [
+        "27c7a341de5d1fff2e627425763f8685a34f45f9",
+        "72c53f5a78eed38fd5d51d9e6e9f97f520eaca9b",
+        "86595b4b8bb7d96751cb7410864443cbfcccf146",
+        "98f6d5324ed7c7e4995af882ca0cc57d4da47e09",
+        "aec95a56e06e1ed013ac2bd80c6cdf8359cfac66"
+      ],
+      "policySha256": "138f84fd1258196260b0f3c60cf0229cba4b9561cc6d2f3c4223e665135c1914"
+    },
+    {
+      "id": "degenhood-canonical",
+      "description": "Private canonical DegenHood repository",
+      "commits": [
+        "e76072ababcc9edc8cb603afdeb51d8f2ff45a00"
+      ],
+      "policySha256": "fec2522d2b0a7be5c1e03b815fcf8915a65053fa4664d01dff78ed99b784ce1d"
+    }
+  ],
+  "files": [
+    {
+      "path": ".github/CODEOWNERS",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": ".github/CODEOWNERS",
+      "mode": "100644",
+      "sha256": "1eea61a82c0179fe39ddf40f791f5f141439f1a84c979111acc2564121bc1982"
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE/bug.yml",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": ".github/ISSUE_TEMPLATE/bug.yml",
+      "mode": "100644",
+      "sha256": "f90a3150f0b611821ace3ede717d3dd9e8b587c3db746710112e7f1011485a21"
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE/config.yml",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": ".github/ISSUE_TEMPLATE/config.yml",
+      "mode": "100644",
+      "sha256": "a5c28bf6ba0bb9f3aabe146ff3a3dc32683491fd7dead5cd93ed58cfc9861d2d"
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE/feature.yml",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": ".github/ISSUE_TEMPLATE/feature.yml",
+      "mode": "100644",
+      "sha256": "bc41c9026cc17dde1bc1cd989e573fedeca8c02892ebcc136df15a735826903e"
+    },
+    {
+      "path": ".github/PULL_REQUEST_TEMPLATE.md",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": ".github/PULL_REQUEST_TEMPLATE.md",
+      "mode": "100644",
+      "sha256": "6cba11b218ae0ea4059cf288347d9a9f049688484c60fab44cb6d2ed311ff12b"
+    },
+    {
+      "path": ".github/dependabot.yml",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": ".github/dependabot.yml",
+      "mode": "100644",
+      "sha256": "2b187ef8e6fb659f397c74a9b7245c714527b2edd8a144aea58a23ca8e671044"
+    },
+    {
+      "path": ".github/workflows/ci.yml",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": ".github/workflows/ci.yml",
+      "mode": "100644",
+      "sha256": "b944aa1594d5371d12a3bbf37206018bb661d979c3d8a60bf515a3479efa1a90"
+    },
+    {
+      "path": ".github/workflows/codeql.yml",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": ".github/workflows/codeql.yml",
+      "mode": "100644",
+      "sha256": "83ce2997e09e5a2f36612020a10bb71a45837cd4cf663cde998619286b6bcc0c"
+    },
+    {
+      "path": ".gitignore",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "public-repository/root/.gitignore",
+      "mode": "100644",
+      "sha256": "cd4fff76833d3411a0d1a053c23d6ef52ec2c960d722927f5886793183a2e52e"
+    },
+    {
+      "path": ".gitmodules",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": ".gitmodules",
+      "mode": "100644",
+      "sha256": "a21ae30373bdf2b3913ddf4f7fab09864fdf7166d3367a944820c9b723280a71"
+    },
+    {
+      "path": "AGENTS.md",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "AGENTS.public.md",
+      "mode": "100644",
+      "sha256": "68d0910f384605ad0842f2b2e6851ac3f38d70ef63efe1a2e3fcb0a02bc9500e"
+    },
+    {
+      "path": "ARCHITECTURE.md",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "ARCHITECTURE.md",
+      "mode": "100644",
+      "sha256": "d91bb6f5112369c2f34ec2f2dc362eae04e0c69a002b33a588216863612fc7fb"
+    },
+    {
+      "path": "CODE_OF_CONDUCT.md",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "CODE_OF_CONDUCT.md",
+      "mode": "100644",
+      "sha256": "944f0091a5e1afc7dc1899ae551eedb5c6596f7b6206a5829d3845a6390fc500"
+    },
+    {
+      "path": "COMPATIBILITY.md",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "COMPATIBILITY.md",
+      "mode": "100644",
+      "sha256": "ce4d6860cc4d79c871e00a3470b6f0159a94cdc5d574a8717cbe31e51bdf0d0d"
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "CONTRIBUTING.md",
+      "mode": "100644",
+      "sha256": "78f43bf4a8aa20afc0fb4048cf72fac2dcdf00a253b8db35ba209f75dfb60db0"
+    },
+    {
+      "path": "DUE_DILIGENCE.md",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "DUE_DILIGENCE.md",
+      "mode": "100644",
+      "sha256": "73462e184d38097fccde92830204396559105c0a0b1155bde0a492c622726487"
+    },
+    {
+      "path": "LICENSE",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "LICENSE",
+      "mode": "100644",
+      "sha256": "ba017956def71fd1f8ae97f640bc04b636c574a3c10a443e41c1e3fed2a02bcb"
+    },
+    {
+      "path": "LICENSES/CC-BY-4.0.txt",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "LICENSES/CC-BY-4.0.txt",
+      "mode": "100644",
+      "sha256": "9e5f1b3c610b9c2da5c313bf81d577a7d1acec686bdb0384edefa6df0f90cd94"
+    },
+    {
+      "path": "LICENSES/LicenseRef-DCO-1.1.txt",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "LICENSES/LicenseRef-DCO-1.1.txt",
+      "mode": "100644",
+      "sha256": "f7ac75b443f4ca16b503241344b41aeff9503b0c30bedc2b119551d83cb0fa90"
+    },
+    {
+      "path": "LICENSES/LicenseRef-DegenHood-Brand.txt",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "LICENSES/LicenseRef-DegenHood-Brand.txt",
+      "mode": "100644",
+      "sha256": "bc256f4eeef64006fe00eccb2f8cd4574fb22cb64188706d0063b8ab2bb1787b"
+    },
+    {
+      "path": "LICENSES/MIT.txt",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "LICENSES/MIT.txt",
+      "mode": "100644",
+      "sha256": "b85dcd3e453d05982552c52b5fc9e0bdd6d23c6f8e844b984a88af32570b0cc0"
+    },
+    {
+      "path": "LICENSING.md",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "LICENSING.md",
+      "mode": "100644",
+      "sha256": "34b9111d74c40c86f819b55524df095e2265ec55ee9f45a9950cdc8042507794"
+    },
+    {
+      "path": "NOTICE.md",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "NOTICE.md",
+      "mode": "100644",
+      "sha256": "b80af1176671abddf45e44af94055134db0f004e31fde6d681219dc9b3a30257"
+    },
+    {
+      "path": "README.md",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "README.public.md",
+      "mode": "100644",
+      "sha256": "69fd79f32a2c15141a38ce4ab78a679f4841b77df65baf483f356aa689bc1a7f"
+    },
+    {
+      "path": "REUSE.toml",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "public-repository/REUSE.toml",
+      "mode": "100644",
+      "sha256": "b3f7f82fe7e6a9b019435a8d15883ae21ec2523483f17d8bc5cc2059a3c34f83"
+    },
+    {
+      "path": "SECURITY.md",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "SECURITY.md",
+      "mode": "100644",
+      "sha256": "d7cac2fcf80363a083732fadcb5afc706d6c3c891bb21cf91682d327e1851a51"
+    },
+    {
+      "path": "THIRD_PARTY_NOTICES.md",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "THIRD_PARTY_NOTICES.md",
+      "mode": "100644",
+      "sha256": "0e75d18063301cae28968b3e9521ea65a509334cd091f34dce19f41bedba68a2"
+    },
+    {
+      "path": "TRADEMARKS.md",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "TRADEMARKS.md",
+      "mode": "100644",
+      "sha256": "de310749638e65b7343e2771b865f3e1679c304cfa14a2d6615d6caf1017a384"
+    },
+    {
+      "path": "contracts-degenetics/README.md",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "public-repository/degenetics-shell/README.md",
+      "mode": "100644",
+      "sha256": "9a3d50924702e3ba2b763bae24df4515aedee432d39139464a467f72014b96d5"
+    },
+    {
+      "path": "contracts-degenetics/SOURCE-MAP.json",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "public-repository/degenetics-manifest.json",
+      "mode": "100644",
+      "sha256": "c9db96b931342b8f7cb7d84646c7a72827a3198db2ec89e7830cfa1a680b812b"
+    },
+    {
+      "path": "contracts-degenetics/foundry.toml",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "public-repository/degenetics-shell/foundry.toml",
+      "mode": "100644",
+      "sha256": "b76e37c78af5846a1e847a017a2d693f0c315120cbaefeffbb85e1e62a39b83d"
+    },
+    {
+      "path": "contracts-degenetics/remappings.txt",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "public-repository/degenetics-shell/remappings.txt",
+      "mode": "100644",
+      "sha256": "d8d78efc303b3d32915aff6e35ed9c36fbd6bdd5787c54613d87a68996004acb"
+    },
+    {
+      "path": "contracts-degenetics/scripts/install-dependencies.sh",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "public-repository/degenetics-shell/scripts/install-dependencies.sh",
+      "mode": "100755",
+      "sha256": "75e599500e42d0c676e48d2ecfc95b8ea5dcde37801b1bf54b552c62624c767c"
+    },
+    {
+      "path": "contracts-degenetics/src/DegenhoodDegens.sol",
+      "sourceId": "degenetics-contracts",
+      "sourceCommit": "72c53f5a78eed38fd5d51d9e6e9f97f520eaca9b",
+      "sourcePath": "src/DegenhoodDegens.sol",
+      "mode": "100644",
+      "sha256": "f76407c2a76f2719503817692caae0d947ee198305017d27091a7e04efe97baf"
+    },
+    {
+      "path": "contracts-degenetics/src/HoodConductor.sol",
+      "sourceId": "degenetics-contracts",
+      "sourceCommit": "98f6d5324ed7c7e4995af882ca0cc57d4da47e09",
+      "sourcePath": "src/HoodConductor.sol",
+      "mode": "100644",
+      "sha256": "777570fc4e044c48721e292c36568df30f601dc05495f69ef2d67aa315a3bfc6"
+    },
+    {
+      "path": "contracts-degenetics/src/HoodFeeFlusher.sol",
+      "sourceId": "degenetics-contracts",
+      "sourceCommit": "aec95a56e06e1ed013ac2bd80c6cdf8359cfac66",
+      "sourcePath": "src/HoodFeeFlusher.sol",
+      "mode": "100644",
+      "sha256": "2053bcbbcf566d6137a77aab07f5388fb2ea8ab63d495ea4d19472073541451c"
+    },
+    {
+      "path": "contracts-degenetics/src/HoodFeeForwarder.sol",
+      "sourceId": "degenetics-contracts",
+      "sourceCommit": "86595b4b8bb7d96751cb7410864443cbfcccf146",
+      "sourcePath": "src/HoodFeeForwarder.sol",
+      "mode": "100644",
+      "sha256": "4f2902c5bf49017e38d581d62347f0f3548b33ae047d2f5b3a0db150744e6965"
+    },
+    {
+      "path": "contracts-degenetics/src/V4PriceSource.sol",
+      "sourceId": "degenetics-contracts",
+      "sourceCommit": "27c7a341de5d1fff2e627425763f8685a34f45f9",
+      "sourcePath": "src/V4PriceSource.sol",
+      "mode": "100644",
+      "sha256": "989815b474270c72366d538bc84b79ddda93fc159edda0ebceaca2861dd3de98"
+    },
+    {
+      "path": "contracts-degenetics/src/interfaces/IEntropySource.sol",
+      "sourceId": "degenetics-contracts",
+      "sourceCommit": "27c7a341de5d1fff2e627425763f8685a34f45f9",
+      "sourcePath": "src/interfaces/IEntropySource.sol",
+      "mode": "100644",
+      "sha256": "14b75ad9ee5230353e2e216994e6f1d3b48c4d5c00377ee01c3f1dfc9596999e"
+    },
+    {
+      "path": "contracts-degenetics/src/interfaces/IPriceSource.sol",
+      "sourceId": "degenetics-contracts",
+      "sourceCommit": "27c7a341de5d1fff2e627425763f8685a34f45f9",
+      "sourcePath": "src/interfaces/IPriceSource.sol",
+      "mode": "100644",
+      "sha256": "4d614322adc5ef12655684515d9ad49b6af9683316efccd70cab7efe8e570d34"
+    },
+    {
+      "path": "contracts-degenetics/test/DegenhoodDegens.t.sol",
+      "sourceId": "degenetics-contracts",
+      "sourceCommit": "72c53f5a78eed38fd5d51d9e6e9f97f520eaca9b",
+      "sourcePath": "test/DegenhoodDegens.t.sol",
+      "mode": "100644",
+      "sha256": "0fac3d722d0cd511166071fc73b1751a5018eec32dd147a46e2cd622daf98254"
+    },
+    {
+      "path": "contracts-degenetics/test/DistributionEpoch.t.sol",
+      "sourceId": "degenetics-contracts",
+      "sourceCommit": "72c53f5a78eed38fd5d51d9e6e9f97f520eaca9b",
+      "sourcePath": "test/DistributionEpoch.t.sol",
+      "mode": "100644",
+      "sha256": "76fefde9f2685e9f8facfa46337a14e654190e8a1685992dbc1cfb0343536488"
+    },
+    {
+      "path": "contracts-degenetics/test/EdgeFuzz.t.sol",
+      "sourceId": "degenetics-contracts",
+      "sourceCommit": "72c53f5a78eed38fd5d51d9e6e9f97f520eaca9b",
+      "sourcePath": "test/EdgeFuzz.t.sol",
+      "mode": "100644",
+      "sha256": "8264eefdff4f0e21c090dd98bdde1932adfa383a2ec5b110082b87e7d4b61019"
+    },
+    {
+      "path": "contracts-degenetics/test/FeeSourceEvents.t.sol",
+      "sourceId": "degenetics-contracts",
+      "sourceCommit": "72c53f5a78eed38fd5d51d9e6e9f97f520eaca9b",
+      "sourcePath": "test/FeeSourceEvents.t.sol",
+      "mode": "100644",
+      "sha256": "572c27cc653fc6552044a22cdb24f2f53a6944a8009b3ad2ee36621af48ac8fa"
+    },
+    {
+      "path": "contracts-degenetics/test/HoodConductor.t.sol",
+      "sourceId": "degenetics-contracts",
+      "sourceCommit": "98f6d5324ed7c7e4995af882ca0cc57d4da47e09",
+      "sourcePath": "test/HoodConductor.t.sol",
+      "mode": "100644",
+      "sha256": "fd41c45c9ef35739d9a0c63b2453864bd210974db529f989f578d3db782dc70f"
+    },
+    {
+      "path": "contracts-degenetics/test/HoodFeeFlusher.t.sol",
+      "sourceId": "degenetics-contracts",
+      "sourceCommit": "aec95a56e06e1ed013ac2bd80c6cdf8359cfac66",
+      "sourcePath": "test/HoodFeeFlusher.t.sol",
+      "mode": "100644",
+      "sha256": "b9e86b7079e2df2683a3b0243fadcffc2e14177d38f27d09ae6785d28c1704ac"
+    },
+    {
+      "path": "contracts-degenetics/test/HoodFeeForwarder.t.sol",
+      "sourceId": "degenetics-contracts",
+      "sourceCommit": "72c53f5a78eed38fd5d51d9e6e9f97f520eaca9b",
+      "sourcePath": "test/HoodFeeForwarder.t.sol",
+      "mode": "100644",
+      "sha256": "068da0a052a6f17fd4674982f4654a64605ee115461048f48a64b90758174bec"
+    },
+    {
+      "path": "contracts-hub/README.md",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/README.md",
+      "mode": "100644",
+      "sha256": "cda9bc794507d40723e45570727e3af249f2eb875d5dd01259ce464b8b93fa79"
+    },
+    {
+      "path": "contracts-hub/foundry.toml",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/foundry.toml",
+      "mode": "100644",
+      "sha256": "81fbf748141a27d2677ac7f900510430f1b19ce373cba76ae833f3364b96672c"
+    },
+    {
+      "path": "contracts-hub/remappings.txt",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/remappings.txt",
+      "mode": "100644",
+      "sha256": "389ace53ca06366528724272de1bd9a90b54bfe0188b3c4db182f737ba667c81"
+    },
+    {
+      "path": "contracts-hub/src/LaunchHub.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/LaunchHub.sol",
+      "mode": "100644",
+      "sha256": "5f00a6e4cb0afa9f9e503374dccb3ab004238c5bfc1a063573421f804fd10b54"
+    },
+    {
+      "path": "contracts-hub/src/LaunchHubV2.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/LaunchHubV2.sol",
+      "mode": "100644",
+      "sha256": "f401b80c2e3dd08eaea812f5eab692952d98466571b78c140fa5ef7c133ed41a"
+    },
+    {
+      "path": "contracts-hub/src/degen-spy-v2/DegenSpyV2Hook.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/degen-spy-v2/DegenSpyV2Hook.sol",
+      "mode": "100644",
+      "sha256": "e071ff67ee4c89c815b7f845af7426b108b49729aedb04a89e7ddf96e449c0a9"
+    },
+    {
+      "path": "contracts-hub/src/degen-spy-v2/DegenSpyV2LpLocker.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/degen-spy-v2/DegenSpyV2LpLocker.sol",
+      "mode": "100644",
+      "sha256": "f1f084bfe32d5ffed3da99a130947c252394ce68c0004ff2e569a85a34fa7a86"
+    },
+    {
+      "path": "contracts-hub/src/degen-spy-v2/DegenSpyV2Module.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/degen-spy-v2/DegenSpyV2Module.sol",
+      "mode": "100644",
+      "sha256": "6af6091a49ffeaf1d79030c579cade1665c7685e37aae9198807d3fbad632fe5"
+    },
+    {
+      "path": "contracts-hub/src/degen-spy/DegenSpyBuybackVault.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/degen-spy/DegenSpyBuybackVault.sol",
+      "mode": "100644",
+      "sha256": "ffc10f08eabe14fe90c5a92684ce98de1c8923a07f418f11377a380390ba97e5"
+    },
+    {
+      "path": "contracts-hub/src/degen-spy/DegenSpyV1FeeLocker.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/degen-spy/DegenSpyV1FeeLocker.sol",
+      "mode": "100644",
+      "sha256": "30f997f22ebc7d10fae6d172af8f1fef2f4d46b80251acb41a78237882acfb94"
+    },
+    {
+      "path": "contracts-hub/src/degen-spy/DegenSpyV1Hook.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/degen-spy/DegenSpyV1Hook.sol",
+      "mode": "100644",
+      "sha256": "c91b70b6d7dafe2fe7ce4a93c41dc66827b4059335eecef7fa28526db0de24ad"
+    },
+    {
+      "path": "contracts-hub/src/degen-spy/DegenSpyV1LpLocker.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/degen-spy/DegenSpyV1LpLocker.sol",
+      "mode": "100644",
+      "sha256": "603b76c53f82eace1f1753678e8f6cab8b65b8bc72389348b3447402b3097bd0"
+    },
+    {
+      "path": "contracts-hub/src/degen-spy/DegenSpyV1Module.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/degen-spy/DegenSpyV1Module.sol",
+      "mode": "100644",
+      "sha256": "8b782568b1f8ee7d1293d64e73f64848e9aa879e78d1120de9e47c5557f13eda"
+    },
+    {
+      "path": "contracts-hub/src/degen-v2/DegenV2Hook.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/degen-v2/DegenV2Hook.sol",
+      "mode": "100644",
+      "sha256": "d82e25793d3f50bf12ab1fc98b65eddaf5e1cfdb320c2de3785dceef4df33726"
+    },
+    {
+      "path": "contracts-hub/src/degen-v2/DegenV2LpLocker.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/degen-v2/DegenV2LpLocker.sol",
+      "mode": "100644",
+      "sha256": "a574cea7de6a1e54a068b46ea20e0fdcbcba8854afde2c3e35730814700ad06f"
+    },
+    {
+      "path": "contracts-hub/src/degen-v2/DegenV2Module.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/degen-v2/DegenV2Module.sol",
+      "mode": "100644",
+      "sha256": "af1471d848dc6b4c540b75fb4f9a88e12a8c934c6c5203128c23278f0981aa71"
+    },
+    {
+      "path": "contracts-hub/src/degen-v3/DegenV1UniswapV3LpLocker.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/degen-v3/DegenV1UniswapV3LpLocker.sol",
+      "mode": "100644",
+      "sha256": "af385c0639485eae32a2306452e265eb2af0bb65290248a6cdc20dbcbd9825ec"
+    },
+    {
+      "path": "contracts-hub/src/degen-v3/DegenV1UniswapV3Module.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/degen-v3/DegenV1UniswapV3Module.sol",
+      "mode": "100644",
+      "sha256": "381c7699433c5b33f58212854eb67dad62532c32e89a9e45989644e71f0e6f73"
+    },
+    {
+      "path": "contracts-hub/src/degen/DegenBuybackVault.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/degen/DegenBuybackVault.sol",
+      "mode": "100644",
+      "sha256": "472b5cf316356c9d05e9c4bc8b923064d2fd8749bd69ebad15a15c657d7554b4"
+    },
+    {
+      "path": "contracts-hub/src/degen/DegenV1FeeLocker.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/degen/DegenV1FeeLocker.sol",
+      "mode": "100644",
+      "sha256": "fb1b3ee507a4bf6d6d1882a960905448c03fafff3171f1239ff75fd83f940082"
+    },
+    {
+      "path": "contracts-hub/src/degen/DegenV1Hook.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/degen/DegenV1Hook.sol",
+      "mode": "100644",
+      "sha256": "6ef42c215c1442a5af058d427cf48d6949bee75008071ab4ba7003a8f43afc23"
+    },
+    {
+      "path": "contracts-hub/src/degen/DegenV1LpLocker.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/degen/DegenV1LpLocker.sol",
+      "mode": "100644",
+      "sha256": "146c95183c20ca93b505c2258aeba7bb0c32ce87f7200487891de18701e5bf83"
+    },
+    {
+      "path": "contracts-hub/src/degen/DegenV1Module.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/degen/DegenV1Module.sol",
+      "mode": "100644",
+      "sha256": "b776eb8cd711e3769f0ee954f256a7cf02568cbd9fa0c0fd2b8c073022c52ccd"
+    },
+    {
+      "path": "contracts-hub/src/deployers/DegenHoodTokenDeployer.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/deployers/DegenHoodTokenDeployer.sol",
+      "mode": "100644",
+      "sha256": "faa60833191bf5c91b43743392fbe3f292c73d14ad762d90c97053bc403588d2"
+    },
+    {
+      "path": "contracts-hub/src/deployers/DegenHoodTokenV5Deployer.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/deployers/DegenHoodTokenV5Deployer.sol",
+      "mode": "100644",
+      "sha256": "bfeacd862b33a9816f97011dd9e85add28a99167d5fee1087b948da4fb0a5240"
+    },
+    {
+      "path": "contracts-hub/src/interfaces/IAccessControlsRegistryMinimal.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/interfaces/IAccessControlsRegistryMinimal.sol",
+      "mode": "100644",
+      "sha256": "6a0ee92fcc16437549f1fe4c16e4fd25c508967b410b8d7730763e665c961fbf"
+    },
+    {
+      "path": "contracts-hub/src/interfaces/IDegenBuybackVault.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/interfaces/IDegenBuybackVault.sol",
+      "mode": "100644",
+      "sha256": "019532057807b713b82069b4890f52e6bb784d1989484104e4c97cf0f9e8e327"
+    },
+    {
+      "path": "contracts-hub/src/interfaces/IDegenHoodTokenV5.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/interfaces/IDegenHoodTokenV5.sol",
+      "mode": "100644",
+      "sha256": "ed967b3e8f08f4ae6a28a92ce00f599587b95b00ffd8cff5fc52d4a61423a015"
+    },
+    {
+      "path": "contracts-hub/src/interfaces/IDegenSpyBuybackVault.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/interfaces/IDegenSpyBuybackVault.sol",
+      "mode": "100644",
+      "sha256": "16bbbb0b8933c39b75083f0abc8934a92b89f7c24efa895b60e43f6aeed51997"
+    },
+    {
+      "path": "contracts-hub/src/interfaces/IDegenSpyV1FeeLocker.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/interfaces/IDegenSpyV1FeeLocker.sol",
+      "mode": "100644",
+      "sha256": "2181089af6f943cc43809367e3dbd7cb86c9638bde540be8582210599126edb4"
+    },
+    {
+      "path": "contracts-hub/src/interfaces/IDegenSpyV1Hook.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/interfaces/IDegenSpyV1Hook.sol",
+      "mode": "100644",
+      "sha256": "1e5c8f6ab207373cfe3c5b97d6cea4af632b38f99669ed76545bb6d295c8ebe3"
+    },
+    {
+      "path": "contracts-hub/src/interfaces/IDegenSpyV1LpLocker.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/interfaces/IDegenSpyV1LpLocker.sol",
+      "mode": "100644",
+      "sha256": "f5e07eff248c99d957b494415dd8c92dbc136bee65f1664b3c51a3faa1ab4e44"
+    },
+    {
+      "path": "contracts-hub/src/interfaces/IDegenSpyV1Module.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/interfaces/IDegenSpyV1Module.sol",
+      "mode": "100644",
+      "sha256": "65c8b157803f40d7bd7954d7160618454db3a024018e0f7e11776ff395c6c652"
+    },
+    {
+      "path": "contracts-hub/src/interfaces/IDegenSpyV2Hook.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/interfaces/IDegenSpyV2Hook.sol",
+      "mode": "100644",
+      "sha256": "ab2fb59f250a939fd5b22c65c18e11748fe811fc0eabdc7087e9e57d6531c4ab"
+    },
+    {
+      "path": "contracts-hub/src/interfaces/IDegenSpyV2LpLocker.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/interfaces/IDegenSpyV2LpLocker.sol",
+      "mode": "100644",
+      "sha256": "b6a62cbc63f75895dd40baaa06c0e3f70d1cf173b5cfdaedca06849aa99df3d4"
+    },
+    {
+      "path": "contracts-hub/src/interfaces/IDegenSpyV2Module.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/interfaces/IDegenSpyV2Module.sol",
+      "mode": "100644",
+      "sha256": "9909021f677350fbc123b4bc919a491a1cdd64f856381e80b86db112bbe2bea6"
+    },
+    {
+      "path": "contracts-hub/src/interfaces/IDegenSpyV3Hook.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/interfaces/IDegenSpyV3Hook.sol",
+      "mode": "100644",
+      "sha256": "b27b8071b2888ecea0a9507ceab0d59ac6e801af4f2e7e682f4e3d7c5be47635"
+    },
+    {
+      "path": "contracts-hub/src/interfaces/IDegenSpyV3LpLocker.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/interfaces/IDegenSpyV3LpLocker.sol",
+      "mode": "100644",
+      "sha256": "bec71f32e22ba5d54d671a9d5c9fabfddd0bee7faffa5322bd835566754cfcc6"
+    },
+    {
+      "path": "contracts-hub/src/interfaces/IDegenSpyV3Module.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/interfaces/IDegenSpyV3Module.sol",
+      "mode": "100644",
+      "sha256": "26a97f7d0223aacbd022d713d9aea2061c97eda88379185f4f2e4c90630a7603"
+    },
+    {
+      "path": "contracts-hub/src/interfaces/IDegenV1FeeLocker.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/interfaces/IDegenV1FeeLocker.sol",
+      "mode": "100644",
+      "sha256": "003a30f204f041b64d4896a933328aa67f6d2be2609f1923b4448608bca3baaa"
+    },
+    {
+      "path": "contracts-hub/src/interfaces/IDegenV1Hook.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/interfaces/IDegenV1Hook.sol",
+      "mode": "100644",
+      "sha256": "6136b9c4b1e8d730127bebe31576ad3cede394ab5cfb20cd0769c7859899a7b3"
+    },
+    {
+      "path": "contracts-hub/src/interfaces/IDegenV1LpLocker.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/interfaces/IDegenV1LpLocker.sol",
+      "mode": "100644",
+      "sha256": "7ad57c27ea025b9727d7f17bd01e92fb3153455b3739dda040b49bc1dc575fb4"
+    },
+    {
+      "path": "contracts-hub/src/interfaces/IDegenV1Module.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/interfaces/IDegenV1Module.sol",
+      "mode": "100644",
+      "sha256": "52896f05723f01e769bbb6f86f9ec984bd8fa3523d635cd8722efe4e999a36ea"
+    },
+    {
+      "path": "contracts-hub/src/interfaces/IDegenV1UniswapV3LpLocker.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/interfaces/IDegenV1UniswapV3LpLocker.sol",
+      "mode": "100644",
+      "sha256": "1e09921857efaa5452fd145b7d6dec1b385c01a91f43ab87ab2f769c4e79df9a"
+    },
+    {
+      "path": "contracts-hub/src/interfaces/IDegenV1UniswapV3Module.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/interfaces/IDegenV1UniswapV3Module.sol",
+      "mode": "100644",
+      "sha256": "7af00063fa724c54d6ddbffed49d36f2d6c2f4ee5c35c8839b4a2bbe66b96efd"
+    },
+    {
+      "path": "contracts-hub/src/interfaces/IDegenV2Hook.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/interfaces/IDegenV2Hook.sol",
+      "mode": "100644",
+      "sha256": "2b8074ab69c4f62f5fb0b89923e1b887e5f8e6bb02ecb804600cc2cd19322b46"
+    },
+    {
+      "path": "contracts-hub/src/interfaces/IDegenV2LpLocker.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/interfaces/IDegenV2LpLocker.sol",
+      "mode": "100644",
+      "sha256": "da66065fc66cfe45f762c4a7084c338791742380b1f2d62824dee6209df38a3c"
+    },
+    {
+      "path": "contracts-hub/src/interfaces/IDegenV2Module.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/interfaces/IDegenV2Module.sol",
+      "mode": "100644",
+      "sha256": "355932df56431a32da75b553c3b234e9578157ba198d8ab201b940a601644269"
+    },
+    {
+      "path": "contracts-hub/src/interfaces/IDegenV3Hook.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/interfaces/IDegenV3Hook.sol",
+      "mode": "100644",
+      "sha256": "92b2734681999b4cc0c982fc32fcf3ca95cd8018cb6791f180d06184905cc93b"
+    },
+    {
+      "path": "contracts-hub/src/interfaces/IDegenV3LpLocker.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/interfaces/IDegenV3LpLocker.sol",
+      "mode": "100644",
+      "sha256": "e608758341cc7c55168eef819e43b78bff9c5cae7561683e42a398ed85f6826d"
+    },
+    {
+      "path": "contracts-hub/src/interfaces/IDegenV3Module.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/interfaces/IDegenV3Module.sol",
+      "mode": "100644",
+      "sha256": "2b23a25d17f082c035d078b09a565ae312dce17d0bc0fc3a19226f4c3a5209fd"
+    },
+    {
+      "path": "contracts-hub/src/interfaces/ILaunchFeeClaimer.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/interfaces/ILaunchFeeClaimer.sol",
+      "mode": "100644",
+      "sha256": "0cee244f003fab6520791464fbace3c6e9802925c80879ddcfdf19e765606f23"
+    },
+    {
+      "path": "contracts-hub/src/interfaces/INonfungiblePositionManagerMinimal.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/interfaces/INonfungiblePositionManagerMinimal.sol",
+      "mode": "100644",
+      "sha256": "82adc1a7f4ece1922cd07023167e39c6c7d5d6574c6aefcf033b98da48bcea67"
+    },
+    {
+      "path": "contracts-hub/src/interfaces/IRobinhoodStockToken.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/interfaces/IRobinhoodStockToken.sol",
+      "mode": "100644",
+      "sha256": "e7c37e02d89dc8696c4a50f6c87152dd650b6b46bb031f8cc746f9e4001591c5"
+    },
+    {
+      "path": "contracts-hub/src/interfaces/IStandardV1FeeLocker.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/interfaces/IStandardV1FeeLocker.sol",
+      "mode": "100644",
+      "sha256": "df1914a01d543d99c7f112e39ac38db4e02ec05ce91bda53590008f47245a26d"
+    },
+    {
+      "path": "contracts-hub/src/interfaces/IStandardV1Hook.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/interfaces/IStandardV1Hook.sol",
+      "mode": "100644",
+      "sha256": "1d6da4864c048bba7d81f0cd5071069c2fb887de7dc4a3e25ea45733d108a7ca"
+    },
+    {
+      "path": "contracts-hub/src/interfaces/IStandardV1LpLocker.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/interfaces/IStandardV1LpLocker.sol",
+      "mode": "100644",
+      "sha256": "db3dce886319fb1111fe6010e929285197826862fa1d6f2b451e5d08a7dbd435"
+    },
+    {
+      "path": "contracts-hub/src/interfaces/IStandardV1Module.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/interfaces/IStandardV1Module.sol",
+      "mode": "100644",
+      "sha256": "8c2c4d1d05522e60f2490514fcd248c4ec90ebfd63ca3e673bba6dc68d7db187"
+    },
+    {
+      "path": "contracts-hub/src/interfaces/IUniswapV3FactoryMinimal.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/interfaces/IUniswapV3FactoryMinimal.sol",
+      "mode": "100644",
+      "sha256": "52cd4bec7d764cbc54f73246b0ef961c035bd59856af2dc68fb7b4f3979e2c06"
+    },
+    {
+      "path": "contracts-hub/src/interfaces/IUniswapV3PoolMinimal.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/interfaces/IUniswapV3PoolMinimal.sol",
+      "mode": "100644",
+      "sha256": "ff77dea8f22e26c39d611685d65879a0d4a6f044a04ad4cad6591d66616220af"
+    },
+    {
+      "path": "contracts-hub/src/interfaces/IUniswapV3SwapPoolMinimal.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/interfaces/IUniswapV3SwapPoolMinimal.sol",
+      "mode": "100644",
+      "sha256": "b6fe6a69d2542a53eca263bca6bb8f41dd3de31ec7cca5ea2283d8267419805a"
+    },
+    {
+      "path": "contracts-hub/src/launchhub-spy-v3/DegenSpyV3Hook.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/launchhub-spy-v3/DegenSpyV3Hook.sol",
+      "mode": "100644",
+      "sha256": "ddd334547eb37901acb85fa92aae2033cb7e9e6f3c26e41709a22f9e30a3eeab"
+    },
+    {
+      "path": "contracts-hub/src/launchhub-spy-v3/DegenSpyV3LpLocker.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/launchhub-spy-v3/DegenSpyV3LpLocker.sol",
+      "mode": "100644",
+      "sha256": "6467a1ca53fd91a8be61148facac7835e3f1302fdbbc773cd5c1a435e5c4661e"
+    },
+    {
+      "path": "contracts-hub/src/launchhub-spy-v3/DegenSpyV3Module.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/launchhub-spy-v3/DegenSpyV3Module.sol",
+      "mode": "100644",
+      "sha256": "188a1137ae13790f2ecbdd06f92f3786c56b03b0fdf1152f7ae4a9db6e412834"
+    },
+    {
+      "path": "contracts-hub/src/launchhub-v3/DegenV3Hook.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/launchhub-v3/DegenV3Hook.sol",
+      "mode": "100644",
+      "sha256": "730c2c36ed6f395386b187a3649887a940267d1ca562c2eeea68a33ecbca1dae"
+    },
+    {
+      "path": "contracts-hub/src/launchhub-v3/DegenV3LpLocker.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/launchhub-v3/DegenV3LpLocker.sol",
+      "mode": "100644",
+      "sha256": "f1677dea2a4444e003476bdf286f12ca15bfd7f18776fde668a7a7edd64bc8ed"
+    },
+    {
+      "path": "contracts-hub/src/launchhub-v3/DegenV3Module.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/launchhub-v3/DegenV3Module.sol",
+      "mode": "100644",
+      "sha256": "65570458828a6579e479440cccb0ff4d37ba039a994844e3528aa68754c5e4a0"
+    },
+    {
+      "path": "contracts-hub/src/libraries/CanonicalIpfsDigest.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/libraries/CanonicalIpfsDigest.sol",
+      "mode": "100644",
+      "sha256": "a637d7fbe741c42e53d0d1e21b560868b98bb67e5fb929a1be6c8dc44a5997cd"
+    },
+    {
+      "path": "contracts-hub/src/libraries/DegenFeeMath.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/libraries/DegenFeeMath.sol",
+      "mode": "100644",
+      "sha256": "fb5059e8ddf5655cc6c6ea3abe35d02277d10624b73b24c7b15a743e1f453f5a"
+    },
+    {
+      "path": "contracts-hub/src/libraries/DegenLaunchConstants.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/libraries/DegenLaunchConstants.sol",
+      "mode": "100644",
+      "sha256": "bbf1c0ab15d07746fbbc2bf7ad785781b7dfa57aafdf04296b259b83b3e90d49"
+    },
+    {
+      "path": "contracts-hub/src/libraries/DegenSpyV1LaunchConstants.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/libraries/DegenSpyV1LaunchConstants.sol",
+      "mode": "100644",
+      "sha256": "7fc62b06d532efd28110a20f0ad9680ac10cbadbbe5dbc2d73881fa5268c55a1"
+    },
+    {
+      "path": "contracts-hub/src/libraries/DegenSpyV2LaunchConstants.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/libraries/DegenSpyV2LaunchConstants.sol",
+      "mode": "100644",
+      "sha256": "3e146f0fd41b4e7799f1c51853db466fa406470797ee73619a39e8c6a7949691"
+    },
+    {
+      "path": "contracts-hub/src/libraries/DegenSpyV3LaunchConstants.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/libraries/DegenSpyV3LaunchConstants.sol",
+      "mode": "100644",
+      "sha256": "159a5e056e89325b235faf1ea73774a6319ae4dc8b054ad3b183f0578da8d6cc"
+    },
+    {
+      "path": "contracts-hub/src/libraries/DegenV1UniswapV3LaunchConstants.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/libraries/DegenV1UniswapV3LaunchConstants.sol",
+      "mode": "100644",
+      "sha256": "06338ff3c15712289991723ccfe5100b623d0fe95837df2b2e00eb98396b40b4"
+    },
+    {
+      "path": "contracts-hub/src/libraries/DegenV2LaunchConstants.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/libraries/DegenV2LaunchConstants.sol",
+      "mode": "100644",
+      "sha256": "511056130997d1cdff9c1fd8505aced6010408ea9204ca654fe168674345309f"
+    },
+    {
+      "path": "contracts-hub/src/libraries/DegenV3LaunchConstants.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/libraries/DegenV3LaunchConstants.sol",
+      "mode": "100644",
+      "sha256": "1e223fc1f3ee00fdc984702ecaf7a1fac5ac8c14dc7a0dbfe1f9de8166bfd536"
+    },
+    {
+      "path": "contracts-hub/src/libraries/StandardFeeMath.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/libraries/StandardFeeMath.sol",
+      "mode": "100644",
+      "sha256": "fa0ba98372e0d54ef5cba6a1ad55ee1d47c452fcc942a995968ca4a5d9d6ecf2"
+    },
+    {
+      "path": "contracts-hub/src/libraries/StandardLaunchConstants.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/libraries/StandardLaunchConstants.sol",
+      "mode": "100644",
+      "sha256": "5a579108b3585e536520bcb8bb89edb0b5cc2a99749798a666aa4f5b3096ecb6"
+    },
+    {
+      "path": "contracts-hub/src/production/ProductionDegenLaunchHub.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/production/ProductionDegenLaunchHub.sol",
+      "mode": "100644",
+      "sha256": "d5e48e9e107cfbc4aed93a2bdae18366bf1686e57010bb5cbdbb46c58b18970c"
+    },
+    {
+      "path": "contracts-hub/src/production/ProductionDegenSpyFeeLocker.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/production/ProductionDegenSpyFeeLocker.sol",
+      "mode": "100644",
+      "sha256": "c1e6ef996ffc491dafb69685c6eec9a9b3434d05fa1d133676afa12eb1c26cc2"
+    },
+    {
+      "path": "contracts-hub/src/production/ProductionDegenSpyHook.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/production/ProductionDegenSpyHook.sol",
+      "mode": "100644",
+      "sha256": "f0c574d3a3c78bc49f38a49bb8979fa489177700e56917a56cf708be355b0a81"
+    },
+    {
+      "path": "contracts-hub/src/production/ProductionDegenSpyLpLocker.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/production/ProductionDegenSpyLpLocker.sol",
+      "mode": "100644",
+      "sha256": "5c7de7badf7b21f80dc07ff281c0e058908063ed3416ddb32a11315c7342828a"
+    },
+    {
+      "path": "contracts-hub/src/production/ProductionDegenSpyModule.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/production/ProductionDegenSpyModule.sol",
+      "mode": "100644",
+      "sha256": "6e664bbb5af0facd4bc7e06ba8e47d5979f2bf18397ccee6bc6ec124575a0eab"
+    },
+    {
+      "path": "contracts-hub/src/production/ProductionDegenToken.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/production/ProductionDegenToken.sol",
+      "mode": "100644",
+      "sha256": "511bdb7aa2fc878fb8c17494c9af23f41029050eca59f8c042391d96022f4987"
+    },
+    {
+      "path": "contracts-hub/src/production/ProductionDegenTokenDeployer.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/production/ProductionDegenTokenDeployer.sol",
+      "mode": "100644",
+      "sha256": "af03b649b69d754f3411cb84a885c85d8482dc87447b16f65b944688cb4455da"
+    },
+    {
+      "path": "contracts-hub/src/production/ProductionDegenTokenInterface.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/production/ProductionDegenTokenInterface.sol",
+      "mode": "100644",
+      "sha256": "ff40da4f8117b9d293078f821af6eaf840652b1c4f8cd45e10da603e6cf276ed"
+    },
+    {
+      "path": "contracts-hub/src/production/ProductionDegenWethFeeLocker.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/production/ProductionDegenWethFeeLocker.sol",
+      "mode": "100644",
+      "sha256": "72908021a2b2eb4a8147fe975eab7706cdd2545c265f8e6f960c0b928d3d5586"
+    },
+    {
+      "path": "contracts-hub/src/production/ProductionDegenWethHook.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/production/ProductionDegenWethHook.sol",
+      "mode": "100644",
+      "sha256": "f3cca8575a81b44c0cbdb712318ace78e283f0ceca33831e9d56068774df9064"
+    },
+    {
+      "path": "contracts-hub/src/production/ProductionDegenWethLpLocker.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/production/ProductionDegenWethLpLocker.sol",
+      "mode": "100644",
+      "sha256": "4504a6c10530bb4b35953e2762395e4bd93d9a4243fb08296bbd9b94b6a2a9c9"
+    },
+    {
+      "path": "contracts-hub/src/production/ProductionDegenWethModule.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/production/ProductionDegenWethModule.sol",
+      "mode": "100644",
+      "sha256": "83b9ccd89e7542acc01046756a9a0f8cc9648de8f6bc92cde5d29e308600dc53"
+    },
+    {
+      "path": "contracts-hub/src/production/ProductionLaunchTypes.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/production/ProductionLaunchTypes.sol",
+      "mode": "100644",
+      "sha256": "d387f29054d420536ac64971c5d77e351d0551d9e9c2504ae0163843f8ad74d7"
+    },
+    {
+      "path": "contracts-hub/src/standard/StandardV1FeeLocker.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/standard/StandardV1FeeLocker.sol",
+      "mode": "100644",
+      "sha256": "0a5e571adba197641e78109e2ae96bf7e3c4f164cbd079a3aa48675480851208"
+    },
+    {
+      "path": "contracts-hub/src/standard/StandardV1Hook.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/standard/StandardV1Hook.sol",
+      "mode": "100644",
+      "sha256": "4f0ec545945bbb0193ecd04c18c681c7d0ed7fa288a2bfbb3bcb5dbc3e62d009"
+    },
+    {
+      "path": "contracts-hub/src/standard/StandardV1LpLocker.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/standard/StandardV1LpLocker.sol",
+      "mode": "100644",
+      "sha256": "831b525b35fd17edfef70eb15da1320139b6de79f039c262a4f8c2b960640fcd"
+    },
+    {
+      "path": "contracts-hub/src/standard/StandardV1Module.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/standard/StandardV1Module.sol",
+      "mode": "100644",
+      "sha256": "6fc785b87ab29e8f0aa49c195d860cb7c1a6347269f0ed6559b8f94a871f4a41"
+    },
+    {
+      "path": "contracts-hub/src/token/DegenHoodTokenV4.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/token/DegenHoodTokenV4.sol",
+      "mode": "100644",
+      "sha256": "0c878bd1a1c4273caba6d256bc48f05762f7eb66188fc4bbd5cb540ca177eab8"
+    },
+    {
+      "path": "contracts-hub/src/token/DegenHoodTokenV5.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/src/token/DegenHoodTokenV5.sol",
+      "mode": "100644",
+      "sha256": "dbda7bb3a087db603266380f6338f19708ce9215bc8bf719804fc28672f8ef3b"
+    },
+    {
+      "path": "contracts-hub/test/helpers/BuybackVaultBindingMock.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/test/helpers/BuybackVaultBindingMock.sol",
+      "mode": "100644",
+      "sha256": "1a97b108298f9dc4914b69b24b48fab116b468d5ece2ed68040fb7abb7be4f12"
+    },
+    {
+      "path": "contracts-hub/test/helpers/DegenHubV4Fixture.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/test/helpers/DegenHubV4Fixture.sol",
+      "mode": "100644",
+      "sha256": "ea03b0ff46e148376ff8f9a9aa8d5074b77ad11652e2ac1e2dded200014343fe"
+    },
+    {
+      "path": "contracts-hub/test/helpers/DegenSpyBuybackVaultBindingMock.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/test/helpers/DegenSpyBuybackVaultBindingMock.sol",
+      "mode": "100644",
+      "sha256": "192a56c1622390abe4131a7b8fe5341bc09caae848841a2c75e757a3fe3c2ee0"
+    },
+    {
+      "path": "contracts-hub/test/helpers/DegenSpyV3StackFixture.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/test/helpers/DegenSpyV3StackFixture.sol",
+      "mode": "100644",
+      "sha256": "1546360335d62ef110bbff985328ab3aa7605130aaee373f25ac11037edca320"
+    },
+    {
+      "path": "contracts-hub/test/helpers/DegenV3StackFixture.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/test/helpers/DegenV3StackFixture.sol",
+      "mode": "100644",
+      "sha256": "3d3707d248fd43962ffbca59ef3f3fa4335c169de8617e54a7dcaef52c0bd1eb"
+    },
+    {
+      "path": "contracts-hub/test/helpers/LaunchHubGenesisFixture.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/test/helpers/LaunchHubGenesisFixture.sol",
+      "mode": "100644",
+      "sha256": "c15bbd9d497cfd9b10459d47a84f64985acf8c2f9c8f4a4a19de66fbc7b40b0d"
+    },
+    {
+      "path": "contracts-hub/test/helpers/LaunchHubV2GenesisFixture.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/test/helpers/LaunchHubV2GenesisFixture.sol",
+      "mode": "100644",
+      "sha256": "87aa7be9ef64d689a0ef71e06add25e3290df8a0e545bc8b9bd32a92a8c0a342"
+    },
+    {
+      "path": "contracts-hub/test/helpers/UniswapV3PositionManagerMock.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/test/helpers/UniswapV3PositionManagerMock.sol",
+      "mode": "100644",
+      "sha256": "e1d1829b1019f88c66dbe02bd10b4158aeae9bedded6d56ddca61888e04d2c69"
+    },
+    {
+      "path": "contracts-hub/test/helpers/UniswapV3SwapPoolMock.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/test/helpers/UniswapV3SwapPoolMock.sol",
+      "mode": "100644",
+      "sha256": "8bc349052aa768ef184648da2b1e33325bb782bf6b5b27f0ee193cf544a1187c"
+    },
+    {
+      "path": "contracts-hub/test/helpers/UniversalCreate2ProxyMock.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/test/helpers/UniversalCreate2ProxyMock.sol",
+      "mode": "100644",
+      "sha256": "eb5f4c4a747b9f91cc89c51af04d2b2d0e8cb409a775208fbf7f0d01faf3e0f4"
+    },
+    {
+      "path": "contracts-hub/test/helpers/V3ProductionBindingMocks.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/test/helpers/V3ProductionBindingMocks.sol",
+      "mode": "100644",
+      "sha256": "67e6edc152b65c269a2ee0e1213091d44756c711dcf009c09d7e00f87f0b1a44"
+    },
+    {
+      "path": "contracts-hub/test/production/DegenLaunchHub.t.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/test/production/DegenLaunchHub.t.sol",
+      "mode": "100644",
+      "sha256": "582cdea05510d31687413e8557b8bf32c1d2d692490694124d8928ee3d07227d"
+    },
+    {
+      "path": "contracts-hub/test/production/DegenSpyStack.t.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/test/production/DegenSpyStack.t.sol",
+      "mode": "100644",
+      "sha256": "236861d11e976236aeaa301c2309992519b3276c64f54f2030365ba8f907e697"
+    },
+    {
+      "path": "contracts-hub/test/production/DegenSpyStackInvariant.t.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/test/production/DegenSpyStackInvariant.t.sol",
+      "mode": "100644",
+      "sha256": "783d15b47ca4ee8f6e994a88ae0e67b9f80666ab34aac6663464b9ca00d4560b"
+    },
+    {
+      "path": "contracts-hub/test/production/DegenToken.t.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/test/production/DegenToken.t.sol",
+      "mode": "100644",
+      "sha256": "512d51f979fe1d66bb23d36be1aa6d4feb525870793986d9f83c668716feb268"
+    },
+    {
+      "path": "contracts-hub/test/production/DegenTokenDeployer.t.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/test/production/DegenTokenDeployer.t.sol",
+      "mode": "100644",
+      "sha256": "bb4b17b4d2c1dfa5df61b5e5e24c37366e1453846e6ff3080f1b6a23c6a0bb83"
+    },
+    {
+      "path": "contracts-hub/test/production/DegenWethStack.t.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/test/production/DegenWethStack.t.sol",
+      "mode": "100644",
+      "sha256": "7192120be7af667a7c2a744817936bbf7b657e0d5ccf7f695a85a45c8792d4f6"
+    },
+    {
+      "path": "contracts-hub/test/production/DegenWethStackInvariant.t.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/test/production/DegenWethStackInvariant.t.sol",
+      "mode": "100644",
+      "sha256": "a3f8cf008b3094ee140c67d215a6a9bb7f5e72f1ff7a604d7541abae31e70e6c"
+    },
+    {
+      "path": "contracts-hub/test/production/ProductionSourceBoundary.t.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-hub/test/production/ProductionSourceBoundary.t.sol",
+      "mode": "100644",
+      "sha256": "727b610e2cf156dab2687cf84d879c979212436c3320c9036f02c812c9cb2cd7"
+    },
+    {
+      "path": "contracts-v4/NOTICE.md",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-v4/NOTICE.md",
+      "mode": "100644",
+      "sha256": "3c1b19ab3fd51e4fcd8983cac95451ca630a28c0b9120e183c9cf3eeaff3dfb1"
+    },
+    {
+      "path": "contracts-v4/foundry.toml",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-v4/foundry.toml",
+      "mode": "100644",
+      "sha256": "68a469e5af33284feee8e5393d2a46e1a4b8c71d76d4adbe7ec817446d656659"
+    },
+    {
+      "path": "contracts-v4/remappings.txt",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-v4/remappings.txt",
+      "mode": "100644",
+      "sha256": "d756f3a58e6d3990dedd0505c9c61771537d2098d4df006d7226dfb495df3490"
+    },
+    {
+      "path": "contracts-v4/src/DegenHoodFeeLocker.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-v4/src/DegenHoodFeeLocker.sol",
+      "mode": "100644",
+      "sha256": "f13bc1a2acad0fcab2b2d0920954265cb040fd8761925b6f4c75e963a80e6b18"
+    },
+    {
+      "path": "contracts-v4/src/DegenHoodTokenV4.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-v4/src/DegenHoodTokenV4.sol",
+      "mode": "100644",
+      "sha256": "daf2428074b58c09696cd3cbc7af879aefbdf6b5ca71d00ff3e09e3402982c3b"
+    },
+    {
+      "path": "contracts-v4/src/DegenHoodV4Factory.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-v4/src/DegenHoodV4Factory.sol",
+      "mode": "100644",
+      "sha256": "5c14ea853f7ca5800cecfe59070ba2eba2d4af8cf5f8089c739c614191a7ebae"
+    },
+    {
+      "path": "contracts-v4/src/DegenHoodV4Hook.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-v4/src/DegenHoodV4Hook.sol",
+      "mode": "100644",
+      "sha256": "cd31b4d3f954b6730c6e1318f5f3645c2bc8588554b43a1d8805de5c140c529d"
+    },
+    {
+      "path": "contracts-v4/src/DegenHoodV4HookV2.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-v4/src/DegenHoodV4HookV2.sol",
+      "mode": "100644",
+      "sha256": "117b37877383c959154a80478c75ded8e5363b9bcdee43ff66ac1cce48524fc3"
+    },
+    {
+      "path": "contracts-v4/src/DegenHoodV4LpLocker.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-v4/src/DegenHoodV4LpLocker.sol",
+      "mode": "100644",
+      "sha256": "c8cfbb6020776560d7f309d51b861499b8ba278adccb2b83fd0ee825957c5f6e"
+    },
+    {
+      "path": "contracts-v4/src/interfaces/IDegenHoodFeeLocker.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-v4/src/interfaces/IDegenHoodFeeLocker.sol",
+      "mode": "100644",
+      "sha256": "2a75afd851c0deaf1320f0adb6cd3941acff77128d65e9cdcf55fea0a7405d4b"
+    },
+    {
+      "path": "contracts-v4/src/interfaces/IDegenHoodV4Factory.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-v4/src/interfaces/IDegenHoodV4Factory.sol",
+      "mode": "100644",
+      "sha256": "2532e7b0341a502ce6469198f24ba5dd338f319f6c5084b282c4a97646d19b51"
+    },
+    {
+      "path": "contracts-v4/src/interfaces/IDegenHoodV4Hook.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-v4/src/interfaces/IDegenHoodV4Hook.sol",
+      "mode": "100644",
+      "sha256": "f923c42e509f54d7168b8bb7129d67c431361ba2ee6c8b61ff834dccf16bf060"
+    },
+    {
+      "path": "contracts-v4/src/interfaces/IDegenHoodV4HookV2.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-v4/src/interfaces/IDegenHoodV4HookV2.sol",
+      "mode": "100644",
+      "sha256": "7b95ef0f10d0da699a22736719a70c8c688b639ce180c2296c50e1710bc5a371"
+    },
+    {
+      "path": "contracts-v4/src/interfaces/IDegenHoodV4LpLocker.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-v4/src/interfaces/IDegenHoodV4LpLocker.sol",
+      "mode": "100644",
+      "sha256": "cb289f833dbcad23b59b2ad44a7a89a4d42621cbb0e500c90dd378bb742417d2"
+    },
+    {
+      "path": "contracts-v4/src/libraries/DegenFeeMath.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-v4/src/libraries/DegenFeeMath.sol",
+      "mode": "100644",
+      "sha256": "2584cbf330d85c6a33283a295d9e23433d9c6d869d02967d04a2c9298303d6dc"
+    },
+    {
+      "path": "contracts-v4/src/libraries/DegenLaunchConstants.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-v4/src/libraries/DegenLaunchConstants.sol",
+      "mode": "100644",
+      "sha256": "33b5ff8b565bf8e6e1abc878164f893423c00a40cda3ac3aa2d83d09c894c594"
+    },
+    {
+      "path": "contracts-v4/src/libraries/DegenPoolKey.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-v4/src/libraries/DegenPoolKey.sol",
+      "mode": "100644",
+      "sha256": "52c76a3fa9cdeeaf53b603e7416b6aa32e823131f6725a1307fd8720007e7766"
+    },
+    {
+      "path": "contracts-v4/test/DegenFeeMath.t.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-v4/test/DegenFeeMath.t.sol",
+      "mode": "100644",
+      "sha256": "f28c5bcbc033fa0f8cea44f06daabef10b5ef08880eac18ea1c307e374010f52"
+    },
+    {
+      "path": "contracts-v4/test/DegenHoodFeeLocker.t.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-v4/test/DegenHoodFeeLocker.t.sol",
+      "mode": "100644",
+      "sha256": "53a582168deb35e45696e8cab8aa18ef758860a4ec2e5e4f7fc58956774018f1"
+    },
+    {
+      "path": "contracts-v4/test/DegenHoodTokenV4.t.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-v4/test/DegenHoodTokenV4.t.sol",
+      "mode": "100644",
+      "sha256": "08ade5d8b389b6e60f6d10f0f86e350f7093f32c78dcb600c4fa4e6cb4b9b149"
+    },
+    {
+      "path": "contracts-v4/test/DegenHoodV4Factory.t.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-v4/test/DegenHoodV4Factory.t.sol",
+      "mode": "100644",
+      "sha256": "06070f70f753564e23212936379983a06d473d1837bf022d90368c2e0c275f82"
+    },
+    {
+      "path": "contracts-v4/test/DegenHoodV4Hook.t.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-v4/test/DegenHoodV4Hook.t.sol",
+      "mode": "100644",
+      "sha256": "6851fbc9bca207b804fb030d26e96005d08a55c181ac4a0780979886e7e0729e"
+    },
+    {
+      "path": "contracts-v4/test/DegenHoodV4HookFlush.t.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-v4/test/DegenHoodV4HookFlush.t.sol",
+      "mode": "100644",
+      "sha256": "4c706e7f969bf98c54c75bc5986ba9baf69689eacf39d8430309754e46a2b0ad"
+    },
+    {
+      "path": "contracts-v4/test/DegenHoodV4HookV2.t.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-v4/test/DegenHoodV4HookV2.t.sol",
+      "mode": "100644",
+      "sha256": "9c3c1e3ba614a994e5ddb2ab56a57b60b78d89381d3f410be1570f20b55d637c"
+    },
+    {
+      "path": "contracts-v4/test/DegenHoodV4Integration.t.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-v4/test/DegenHoodV4Integration.t.sol",
+      "mode": "100644",
+      "sha256": "171e16e203b3c63dfcc4fdedc88011800fadb97e70fccbe55c431ac0fbf3eda1"
+    },
+    {
+      "path": "contracts-v4/test/DegenHoodV4IntegrationV2.t.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-v4/test/DegenHoodV4IntegrationV2.t.sol",
+      "mode": "100644",
+      "sha256": "cd26239015103869297b68ee387aaf43f30fb1579d3b598760513f486fe7ceae"
+    },
+    {
+      "path": "contracts-v4/test/DegenHoodV4Invariant.t.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-v4/test/DegenHoodV4Invariant.t.sol",
+      "mode": "100644",
+      "sha256": "a2d6780ec43f44fdc2b6f74adb3cf844c53dd74f9cf1ca89b203ad8ab21583dc"
+    },
+    {
+      "path": "contracts-v4/test/DegenHoodV4InvariantV2.t.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-v4/test/DegenHoodV4InvariantV2.t.sol",
+      "mode": "100644",
+      "sha256": "daae8f77a9ad0caa5beeea5b256444e3d936b064bca67604eeb00a2b12bb86d4"
+    },
+    {
+      "path": "contracts-v4/test/DegenHoodV4LpLocker.t.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-v4/test/DegenHoodV4LpLocker.t.sol",
+      "mode": "100644",
+      "sha256": "070a75cec4c430809a8940b351826e01da3d50eb178f7ca1d041e057feb3aef4"
+    },
+    {
+      "path": "contracts-v4/test/artifacts/DegenPermit2Artifact.t.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-v4/test/artifacts/DegenPermit2Artifact.t.sol",
+      "mode": "100644",
+      "sha256": "dab6868d2bd584a7bf507807737b04989a0a1632095daeb1a4f79e309db67153"
+    },
+    {
+      "path": "contracts-v4/test/artifacts/DegenPoolManagerArtifact.t.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-v4/test/artifacts/DegenPoolManagerArtifact.t.sol",
+      "mode": "100644",
+      "sha256": "f09b8874b7f9ef215b2273549a7434f3df3d2a1a30b0da4ad22e9204b065f4fe"
+    },
+    {
+      "path": "contracts-v4/test/helpers/DegenV4Fixture.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-v4/test/helpers/DegenV4Fixture.sol",
+      "mode": "100644",
+      "sha256": "f3464338c1bf6d223dfe4a65245d470d968954e4a18f0f8e96c6a33886e7f36f"
+    },
+    {
+      "path": "contracts-v4/test/helpers/DegenV4LaunchFixture.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-v4/test/helpers/DegenV4LaunchFixture.sol",
+      "mode": "100644",
+      "sha256": "9de2d4c0340054d3c147de17fa72695cbde86acb28464bcd847087b31145a5c2"
+    },
+    {
+      "path": "contracts-v4/test/helpers/DegenV4SwapHarness.sol",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "contracts-v4/test/helpers/DegenV4SwapHarness.sol",
+      "mode": "100644",
+      "sha256": "6050dca1025d2638ee0525706a993d3480641884321704ce1312724e14ec10c0"
+    },
+    {
+      "path": "docs/README.md",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "docs/public/README.md",
+      "mode": "100644",
+      "sha256": "b204d75c3dcc2c3682d33c5ac9c6e8b0d8ad2436063e7a8318284f5a6f65ef55"
+    },
+    {
+      "path": "docs/degenetics.md",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "docs/public/degenetics.md",
+      "mode": "100644",
+      "sha256": "9cc31775e4d6460031d590074ddf4d74443dee129b9169bcbe462d21062a2fd2"
+    },
+    {
+      "path": "docs/degenhood/2026-07-13-v4-user-disclosures.md",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "docs/degenhood/2026-07-13-v4-user-disclosures.md",
+      "mode": "100644",
+      "sha256": "499d6a9135d5c07e79c6ef0d705e482a68810a353ebfed616edd1f17efd5c631"
+    },
+    {
+      "path": "docs/deployments.md",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "docs/public/deployments.md",
+      "mode": "100644",
+      "sha256": "dc67bb1bba69a07916fe630f8fb40a9748301b8e9ebad336c6477cdf89671c4a"
+    },
+    {
+      "path": "docs/publication-process.md",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "docs/public/publication-process.md",
+      "mode": "100644",
+      "sha256": "f0a45f7a0f92851bf81381b9938b9ec4c6a02d8a1646b87ee606d61076d73da0"
+    },
+    {
+      "path": "examples/developer/prepare-launch.ts",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "examples/developer/prepare-launch.ts",
+      "mode": "100644",
+      "sha256": "4d83e939340330542f2e33f3e2d9c397fabfb12d02b69300f12e5d22f71e0cfe"
+    },
+    {
+      "path": "examples/developer/token.example.json",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "examples/developer/token.example.json",
+      "mode": "100644",
+      "sha256": "19cc69aac7d8b630dfa7de756ab7ad7f769a8c13c27d1c6563cfeab9ebbbe0f9"
+    },
+    {
+      "path": "openapi/degenhood-v1.yaml",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "openapi/degenhood-v1.yaml",
+      "mode": "100644",
+      "sha256": "dac004959cb702325d75bf7a34b3255627c24ddc603c7d1d7495e79857c01b95"
+    },
+    {
+      "path": "packages/cli/LICENSE",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "packages/cli/LICENSE",
+      "mode": "100644",
+      "sha256": "ba017956def71fd1f8ae97f640bc04b636c574a3c10a443e41c1e3fed2a02bcb"
+    },
+    {
+      "path": "packages/cli/README.md",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "packages/cli/README.md",
+      "mode": "100644",
+      "sha256": "3ee6726ea2e5f6db05c15820a2275e303d31d3e0d1e4b1545688fbc6c7c442ca"
+    },
+    {
+      "path": "packages/cli/package-lock.json",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "packages/cli/package-lock.json",
+      "mode": "100644",
+      "sha256": "11563a5ac2a8b307b83bc24de6396fa814818eb05b43cd930724834dfc940d07"
+    },
+    {
+      "path": "packages/cli/package.json",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "packages/cli/package.json",
+      "mode": "100644",
+      "sha256": "b9b8dd53ea340a908e39e98a179013fd20a48a11d0d1678d6a0ab29e72954807"
+    },
+    {
+      "path": "packages/cli/src/args.js",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "packages/cli/src/args.js",
+      "mode": "100644",
+      "sha256": "6971f7d51da0297be29efefaf0a18dffb4eaab9d61f3956bf28dc50246b8e329"
+    },
+    {
+      "path": "packages/cli/src/cli.js",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "packages/cli/src/cli.js",
+      "mode": "100755",
+      "sha256": "ecca3ab1a9fa1515ab34a7223dd2b3eb2fba84ed40252c0c286a1fb7f323d593"
+    },
+    {
+      "path": "packages/cli/src/commands.js",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "packages/cli/src/commands.js",
+      "mode": "100644",
+      "sha256": "898ab921fa0f99231bb7e7799ca46d029b387cc90c1b1be1afaa06e84d42e1e0"
+    },
+    {
+      "path": "packages/cli/test/cli.test.js",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "packages/cli/test/cli.test.js",
+      "mode": "100644",
+      "sha256": "63b8661890f75f41f3f96620c1d557381971cf90d352a8db6c1770666c205ff3"
+    },
+    {
+      "path": "packages/sdk/LICENSE",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "packages/sdk/LICENSE",
+      "mode": "100644",
+      "sha256": "ba017956def71fd1f8ae97f640bc04b636c574a3c10a443e41c1e3fed2a02bcb"
+    },
+    {
+      "path": "packages/sdk/README.md",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "packages/sdk/README.md",
+      "mode": "100644",
+      "sha256": "d005b7d6a884f343356fcbc33b3701959fc336997f4c612905b55b1847f9dda3"
+    },
+    {
+      "path": "packages/sdk/package-lock.json",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "packages/sdk/package-lock.json",
+      "mode": "100644",
+      "sha256": "d9a6c0c4f82a350376b553be980ddbd04ecfad3e2699e3bd143e09e5ea10a480"
+    },
+    {
+      "path": "packages/sdk/package.json",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "packages/sdk/package.json",
+      "mode": "100644",
+      "sha256": "d21cab02750a5ca0cd8027cd66295cb0e7d6e8bfacabc40fd58005f1f72e4188"
+    },
+    {
+      "path": "packages/sdk/src/index.js",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "packages/sdk/src/index.js",
+      "mode": "100644",
+      "sha256": "c03d3debd7f3def514320c320dbe396d8ff1e84085980305e30b3904e3a7755a"
+    },
+    {
+      "path": "packages/sdk/test/sdk.test.js",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "packages/sdk/test/sdk.test.js",
+      "mode": "100644",
+      "sha256": "b0061f43da4d820a0b75fd2d0f26be5e56decae2f00140e18bf5ba4228c7d67e"
+    },
+    {
+      "path": "public-repository/deployments.json",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "public-repository/deployments.json",
+      "mode": "100644",
+      "sha256": "3cdc7d8acdabafc20f95ef3cb3f5c3f2b749a357a94d4893eeae8a24a80b396c"
+    },
+    {
+      "path": "scripts/render-public-deployments.mjs",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "scripts/render-public-deployments.mjs",
+      "mode": "100644",
+      "sha256": "372a63bafe55849ef1d70e2c1dc5cac3c19902ffa3694d69f247a1e11781dde8"
+    },
+    {
+      "path": "scripts/verify-package-release.mjs",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "scripts/verify-package-release.mjs",
+      "mode": "100644",
+      "sha256": "6365cc891e0ae8606d3a986be0e0ca9fc93c6af4b3df32d15211053f99d75048"
+    },
+    {
+      "path": "scripts/verify-public-core.sh",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "scripts/verify-public-core.sh",
+      "mode": "100755",
+      "sha256": "9d0d89e812d5fc0847f34df5d2feac21293d874d217069118e8c0b58168ff18e"
+    },
+    {
+      "path": "scripts/verify-public-disclosure.mjs",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "scripts/verify-public-disclosure.mjs",
+      "mode": "100644",
+      "sha256": "867a32bb7ed2603c688f5b2b5d71e721984990d02444ea1f487fae511b06453f"
+    },
+    {
+      "path": "skills/prepare-degenhood-launch/SKILL.md",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "skills/prepare-degenhood-launch/SKILL.md",
+      "mode": "100644",
+      "sha256": "7beef7f4b7b0adaf2b19079aa486c9b12012a9cdf06c7e433f8e90668840f0ec"
+    },
+    {
+      "path": "skills/prepare-degenhood-launch/agents/openai.yaml",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "skills/prepare-degenhood-launch/agents/openai.yaml",
+      "mode": "100644",
+      "sha256": "a941baa29dc427703b543f552df1ab0b725c01911e7586700543e0557c9d8cfc"
+    },
+    {
+      "path": "test/developerDistribution.test.js",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "test/developerDistribution.test.js",
+      "mode": "100644",
+      "sha256": "0e1dc0dab96ae5c83dda659998ad5217591788db2d8c4968ec4c98c32760e5f2"
+    },
+    {
+      "path": "test/publicDeploymentReference.test.js",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "test/publicDeploymentReference.test.js",
+      "mode": "100644",
+      "sha256": "065b593764fb04b4c4233d7aec2d151368730b8b3c4bce40ffaf3a710b243bd1"
+    },
+    {
+      "path": "test/publicDisclosureBoundary.test.js",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "test/publicDisclosureBoundary.test.js",
+      "mode": "100644",
+      "sha256": "51de1ad8bc6b82d9681f34ec561a7457f955c890b8b590cbbf9e62ab607cc56b"
+    },
+    {
+      "path": "test/publicGovernance.test.js",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "test/publicGovernance.test.js",
+      "mode": "100644",
+      "sha256": "930ac4c1eafb16561ba413c33b19098d6fb0b79c3e696252a23cefbc6c5d569a"
+    },
+    {
+      "path": "test/publicLicensing.test.js",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "test/publicLicensing.test.js",
+      "mode": "100644",
+      "sha256": "b6818e0f9e439d7e3b11cdfe5de7ea5f19f2685cd29c00d727176faa3fe49ebc"
+    },
+    {
+      "path": "test/publicPackageCompatibility.test.js",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "test/publicPackageCompatibility.test.js",
+      "mode": "100644",
+      "sha256": "c5fbf095406ca7f98519baa8c98a1e941bad87c672d5c13246e1fd534cc2a3d5"
+    },
+    {
+      "path": "test/publicRepositoryCi.test.js",
+      "sourceId": "degenhood-canonical",
+      "sourceCommit": "e76072ababcc9edc8cb603afdeb51d8f2ff45a00",
+      "sourcePath": "test/publicRepositoryCi.test.js",
+      "mode": "100644",
+      "sha256": "c439d1381d6ee4f8359bfec440aafe0d8e5d4976fd7764a138486160bb620d05"
+    }
+  ],
+  "gitlinks": [
+    {
+      "path": "contracts-v4/lib/forge-std",
+      "commit": "77041d2ce690e692d6e03cc812b57d1ddaa4d505"
+    },
+    {
+      "path": "contracts-v4/lib/openzeppelin-contracts",
+      "commit": "a7d38c7a3321e3832ca84f7ba1125dff9a91361e"
+    },
+    {
+      "path": "contracts-v4/lib/permit2",
+      "commit": "cc56ad0f3439c502c246fc5cfcc3db92bb8b7219"
+    },
+    {
+      "path": "contracts-v4/lib/universal-router",
+      "commit": "3663f6db6e2fe121753cd2d899699c2dc75dca86"
+    },
+    {
+      "path": "contracts-v4/lib/v4-core",
+      "commit": "5f00c8416c19a7e6a5a5d0539fad30fd124f7b86"
+    },
+    {
+      "path": "contracts-v4/lib/v4-periphery",
+      "commit": "9628c36b4f5083d19606e63224e4041fe748edae"
+    }
+  ]
+}

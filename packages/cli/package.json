@@ -1,6 +1,6 @@
 {
   "name": "@degenhood/cli",
-  "version": "0.1.0",
+  "version": "0.1.0-canary.0",
   "description": "Non-custodial DegenHood CLI for unsigned launch preparation and verification.",
   "license": "MIT",
   "repository": {
@@ -22,7 +22,7 @@
   },
   "publishConfig": {
     "access": "public",
-    "tag": "latest"
+    "tag": "canary"
   },
   "scripts": {
     "test": "node --test"
@@ -31,7 +31,7 @@
     "viem": "^2.55.0"
   },
   "peerDependencies": {
-    "@degenhood/sdk": "0.1.0"
+    "@degenhood/sdk": "0.1.0-canary.0"
   },
   "devDependencies": {
     "@degenhood/sdk": "file:../sdk"

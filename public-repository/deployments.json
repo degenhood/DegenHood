@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "network": {
+    "name": "Robinhood Chain",
+    "chainId": 4663,
+    "explorer": "https://robinhoodchain.blockscout.com"
+  },
+  "reconciliation": {
+    "date": "2026-08-13",
+    "blockNumber": 35474835,
+    "blockHash": "0xb373803c8bae7e9efc0e88f8aa730614cdb5b85095bbce0b921cf5331d5461ea",
+    "blockTimestamp": "2026-08-13T14:49:26.000Z",
+    "status": "runtime-and-explorer-reconciled",
+    "firstPartyRuntimeMatches": 19,
+    "dependencyCodePresent": 5,
+    "blockscoutVerified": 19,
+    "blockscoutFullyVerified": 6,
+    "blockscoutPartiallyVerified": 13,
+    "exactMainSourceMatches": 18,
+    "sourceDifference": "$DEGEN local source adds a comment-only ASCII-art header; runtime bytecode matches"
+  },
+  "groups": [
+    {
+      "title": "Degen LaunchHub",
+      "contracts": [
+        { "name": "Degen LaunchHub", "address": "0x7E20ef986E5cA961D3fB40eBADd51c27c6274176", "source": "contracts-hub/src/production/ProductionDegenLaunchHub.sol" },
+        { "name": "Token deployer", "address": "0x4F037d19050B8494fa1f65f924Ce0f5F5D96bBC0", "source": "contracts-hub/src/deployers/DegenHoodTokenV5Deployer.sol" },
+        { "name": "WETH launch module", "address": "0x851EE5c88Ed241A14698518b9C857bb097AcC77A", "source": "contracts-hub/src/production/ProductionDegenWethModule.sol" },
+        { "name": "SPY launch module", "address": "0xfd9780B6bCC855CE00E80cB183D0047ed0112AF4", "source": "contracts-hub/src/production/ProductionDegenSpyModule.sol" },
+        { "name": "WETH LP locker", "address": "0x22c51ef3c036006eB7C0505E192f1E1De38D86d3", "source": "contracts-hub/src/launchhub-v3/DegenV3LpLocker.sol" },
+        { "name": "SPY LP locker", "address": "0x86E9535d0224Ea890bbeD10aFd2c6157140C87c1", "source": "contracts-hub/src/launchhub-spy-v3/DegenSpyV3LpLocker.sol" },
+        { "name": "WETH buyback vault", "address": "0xdf894EC4B3d9Dbe30F81334cEeE0a8D667a35057", "source": "contracts-hub/src/degen/DegenBuybackVault.sol" },
+        { "name": "SPY buyback vault", "address": "0x910313C5303FeCf33A2DBB1d945AAD9C26a3a952", "source": "contracts-hub/src/degen-spy/DegenSpyBuybackVault.sol" }
+      ]
+    },
+    {
+      "title": "$DEGEN and frozen v4",
+      "contracts": [
+        { "name": "$DEGEN token", "address": "0x04d5D8a61DA0b6548B136412843aDBA55EbeaDE6", "source": "contracts-v4/src/DegenHoodTokenV4.sol" },
+        { "name": "v4 factory", "address": "0x4999B79be94D1E9CadC7a50cbb4E75B81A0B3a00", "source": "contracts-v4/src/DegenHoodV4Factory.sol" },
+        { "name": "v4 hook", "address": "0x61C96E7E3E04317A841E8E24630F9d78f98630cC", "source": "contracts-v4/src/DegenHoodV4HookV2.sol" },
+        { "name": "v4 LP locker", "address": "0xfEEB9f1E369A3FCCDd8388B069b5f86300fe1B92", "source": "contracts-v4/src/DegenHoodV4LpLocker.sol" },
+        { "name": "v4 fee locker", "address": "0x05dcb43fF3FEA906723ADd1e876D004360E47760", "source": "contracts-v4/src/DegenHoodFeeLocker.sol" }
+      ]
+    },
+    {
+      "title": "Degenetics · DegenHood Degens",
+      "contracts": [
+        { "name": "DegenHood Degens", "address": "0xf449B45DcF716E3ee679CDdbB87EB3d9ED34e71b", "source": "contracts-degenetics/src/DegenhoodDegens.sol", "sourceCommit": "72c53f5a78eed38fd5d51d9e6e9f97f520eaca9b" },
+        { "name": "Hood Conductor", "address": "0x800C6304da5752AF135459e4790Bb4b795C5E9C8", "source": "contracts-degenetics/src/HoodConductor.sol", "sourceCommit": "98f6d5324ed7c7e4995af882ca0cc57d4da47e09" },
+        { "name": "v4 price source", "address": "0x39cc8CEF2Dbc735F5B1cEaD3F6006095Fc84C7C0", "source": "contracts-degenetics/src/V4PriceSource.sol", "sourceCommit": "27c7a341de5d1fff2e627425763f8685a34f45f9" },
+        { "name": "LP fee forwarder", "address": "0xD2428d2190bc383d9d34706f9BDD591290aab857", "source": "contracts-degenetics/src/HoodFeeForwarder.sol", "sourceCommit": "86595b4b8bb7d96751cb7410864443cbfcccf146" },
+        { "name": "Royalty forwarder", "address": "0x011508A95f4C97F34182676316236901c273E5C1", "source": "contracts-degenetics/src/HoodFeeForwarder.sol", "sourceCommit": "86595b4b8bb7d96751cb7410864443cbfcccf146" },
+        { "name": "Fee flusher", "address": "0xE0731f4adA23BF193278188Bd3BE2407F56817De", "source": "contracts-degenetics/src/HoodFeeFlusher.sol", "sourceCommit": "aec95a56e06e1ed013ac2bd80c6cdf8359cfac66" }
+      ]
+    }
+  ],
+  "dependencies": [
+    { "name": "Uniswap v4 PoolManager", "address": "0x8366a39CC670B4001A1121B8F6A443A643e40951" },
+    { "name": "Uniswap v4 PositionManager", "address": "0x58daec3116aae6D93017bAAea7749052E8a04fA7" },
+    { "name": "Uniswap Universal Router", "address": "0x8876789976dEcBfCbBbe364623C63652db8C0904" },
+    { "name": "WETH", "address": "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73" },
+    { "name": "SPY", "address": "0x117cc2133c37B721F49dE2A7a74833232B3B4C0C" }
+  ]
+}

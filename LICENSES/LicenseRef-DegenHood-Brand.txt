@@ -1,0 +1,17 @@
+DegenHood Brand Asset Terms
+
+Copyright (c) 2026 the applicable DegenHood rights holders. All rights reserved.
+
+These terms apply to the DegenHood name, $DEGEN name, logos, symbols,
+wordmarks, character designs, pack artwork, motion artwork, promotional
+artwork, and distinctive trade dress identified as brand assets by
+REUSE.toml.
+
+No trademark licence is granted. No copyright licence is granted except
+where a separate written permission expressly identifies the asset and the
+permitted use. The MIT and CC BY 4.0 licences elsewhere in this repository
+do not apply to material mapped to LicenseRef-DegenHood-Brand.
+
+Factual, non-misleading references and other uses permitted by applicable
+law are not restricted by these terms. Nothing here may be read as claiming
+a registration or right that does not exist under applicable law.

@@ -1,49 +1,49 @@
 # Security policy
 
-## Reporting a vulnerability
-
-Please send suspected vulnerabilities through GitHub's private vulnerability reporting:
-
-1. Open this repository's **Security** tab.
-2. Select **Advisories**.
-3. Select **Report a vulnerability**.
-4. Include the affected package or file, reproducible impact, and the smallest safe proof of
-   concept.
+## Report privately
 
 Use [GitHub Security Advisories](https://github.com/degenhood/DegenHood/security/advisories/new)
-instead of a public issue, discussion, pull request, social post, or onchain message.
+through private vulnerability reporting instead of a public issue.
+Do not publish a vulnerability, exploit, credential, funded-wallet signature or sensitive personal
+data in an issue, pull request, discussion, social post or on-chain message.
 
-Do not include real private keys, seed phrases, access tokens, database credentials, funded-wallet
-signatures, or unnecessary personal data. Use disposable test accounts and redact secrets from
-logs.
+Include:
 
-## Scope
+- affected component and public commit or deployed address;
+- realistic impact and preconditions;
+- minimal reproduction using local simulation or accounts you control;
+- suggested mitigation, if known;
+- a safe contact method for coordinated follow-up.
 
-This repository's security scope is:
+## Public scope
 
-- `@degenhood/sdk`;
-- `@degenhood/cli`;
-- the public OpenAPI specification and examples;
-- the public launch-preparation agent skill;
-- violations of the documented non-custodial boundary; and
-- material discrepancies between verified calldata and wallet-visible intent.
+In scope:
 
-Third-party protocols, wallets, RPC providers, block explorers, and dependencies should be
-reported to their maintainers unless the issue is caused by this repository's integration code.
+- DegenHood-authored production contract source published under `contracts-hub/src` and
+  `contracts-v4/src`;
+- Degenetics contract source published under `contracts-degenetics/src`;
+- `@degenhood/sdk`, `@degenhood/cli` and the public OpenAPI contract;
+- failures that cross the documented non-custodial boundary;
+- material differences between public source, wallet-visible intent and deployed behaviour.
+
+Private infrastructure is not available for unauthorised testing. Third-party wallets, protocols,
+RPCs, explorers and dependencies should normally be reported to their maintainers unless the flaw
+is caused by DegenHood integration code.
 
 ## Safe research
 
-- Use local simulations or accounts you control.
-- Do not access other users' data or funds.
-- Do not degrade public services, spam endpoints, or test against production without written
+- Prefer local chains, forks and simulations.
+- Use only accounts, assets and data you control.
+- Do not access another user's data or funds.
+- Do not degrade availability, evade controls, spam services or test production without written
   permission.
-- Stop when a test could move funds, sign for another party, expose personal data, or affect
-  availability.
+- Stop before a test could move funds, expose personal data or materially affect another user.
 
-We will acknowledge good-faith reports as capacity permits, investigate reproducible impact, and
-coordinate remediation and disclosure. Submission does not create a contractual obligation,
-bounty entitlement, or guaranteed response time.
+We will acknowledge reproducible, good-faith reports as capacity permits and coordinate remediation
+and disclosure. Submission does not create a bounty entitlement, contractual obligation or
+guaranteed response time.
 
 ## Supported versions
 
-Security fixes target the current default branch and the latest stable package versions.
+Security fixes target the current public `main` release and deployed production contracts where a
+remediation path exists. Older prereleases and unlisted deployments may be unsupported.

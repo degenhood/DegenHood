@@ -1,0 +1,55 @@
+name: Bug report
+description: Report a reproducible defect in the public DegenHood core
+title: "[Bug]: "
+labels: ["bug", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Do not report security vulnerabilities here. Use private vulnerability reporting from the issue chooser.
+        Never include secrets, private keys, wallet signatures, personal data, or production credentials.
+  - type: dropdown
+    id: component
+    attributes:
+      label: Component
+      options:
+        - Web application
+        - SDK or CLI
+        - LaunchHub contracts
+        - Frozen v4 contracts
+        - OpenAPI or documentation
+        - Public export tooling
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version or commit
+      placeholder: Release tag or full commit SHA
+    validations:
+      required: true
+  - type: textarea
+    id: observed
+    attributes:
+      label: What happened?
+      description: Include the smallest safe reproduction and the actual result.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect?
+    validations:
+      required: true
+  - type: textarea
+    id: verification
+    attributes:
+      label: Verification
+      description: List commands run and relevant non-sensitive output.
+  - type: checkboxes
+    id: declaration
+    attributes:
+      label: Safety check
+      options:
+        - label: This report contains no vulnerability details, secrets, signatures, personal data, or private infrastructure information.
+          required: true
