@@ -14,6 +14,197 @@ import {
 
 const launcher = "0x1111111111111111111111111111111111111111";
 const factory = "0x2222222222222222222222222222222222222222";
+const hub = "0x6666666666666666666666666666666666666666";
+const domainId = `0x${"8".repeat(64)}`;
+const module = "0x7777777777777777777777777777777777777777";
+const tokenDeployer = "0x8888888888888888888888888888888888888888";
+const predictedToken = "0x0333333333333333333333333333333333333de6";
+const spy = "0x117cc2133c37B721F49dE2A7a74833232B3B4C0C";
+const spyOnlyPredictedToken = `0x10${"0".repeat(35)}de6`;
+
+test("LaunchHub draft canonicalizes the full commitment without a prediction", () => {
+  assert.equal(typeof sdk.buildHubLaunchDraft, "function", "buildHubLaunchDraft is missing");
+  const draft = sdk.buildHubLaunchDraft({
+    domainId,
+    templateId: 4,
+    version: 1,
+    name: "  Spy Hood  ",
+    symbol: "spyhood",
+    launcher,
+    description: "SPY launch",
+    website: "https://degenhood.fun",
+    userSalt: "0x01",
+  });
+
+  assert.equal(draft.name, "Spy Hood");
+  assert.equal(draft.symbol, "SPYHOOD");
+  assert.equal(draft.templateId, 4n);
+  assert.equal(draft.version, 1);
+  assert.equal(draft.tokenAdmin, launcher);
+  assert.equal(draft.feeAdmin, launcher);
+  assert.equal(draft.beneficiary, launcher);
+  assert.equal(draft.userSalt, `0x${"0".repeat(62)}01`);
+  assert.equal(draft.launchData, "0x");
+  assert.equal(draft.contractURI, JSON.stringify({
+    description: "SPY launch",
+    website: "https://degenhood.fun",
+    x: "",
+    telegram: "",
+  }));
+  assert.match(sdk.hubLaunchCommitment(draft), /^0x[0-9a-f]{64}$/);
+  assert.notEqual(
+    sdk.hubLaunchCommitment({ ...draft, beneficiary: factory }),
+    sdk.hubLaunchCommitment(draft),
+  );
+  assert.throws(() => sdk.buildHubLaunchDraft({
+    ...draft, domainId: sdk.ZERO_BYTES32
+  }), /domainId/i);
+});
+
+test("LaunchHub calldata binds the prediction and every request field", () => {
+  const draft = sdk.buildHubLaunchDraft({
+    domainId,
+    templateId: 2,
+    version: 1,
+    name: "Degen Hub",
+    symbol: "HUB",
+    launcher,
+    userSalt: "0x1234",
+  });
+  const request = sdk.buildHubLaunchRequest({ ...draft, predictedToken });
+  const decoded = decodeFunctionData({
+    abi: sdk.HUB_LAUNCH_ABI,
+    data: sdk.encodeHubLaunchCalldata(request),
+  });
+
+  assert.equal(decoded.functionName, "launch");
+  assert.equal(decoded.args[0].domainId, domainId);
+  assert.equal(decoded.args[0].templateId, 2n);
+  assert.equal(decoded.args[0].version, 1);
+  assert.equal(decoded.args[0].predictedToken, predictedToken);
+  assert.equal(decoded.args[0].launchData, "0x");
+});
+
+test("LaunchHub preparation is one verified zero-value direct Hub call", () => {
+  const request = sdk.buildHubLaunchRequest({
+    ...sdk.buildHubLaunchDraft({
+      domainId,
+      templateId: 3,
+      version: 1,
+      name: "Degen Three",
+      symbol: "D3",
+      launcher,
+    }),
+    predictedToken,
+  });
+  const preparation = {
+    version: "launchhub-launch-v1",
+    chainId: 4663,
+    launchHub: hub,
+    request: sdk.serializeHubLaunchRequest(request),
+    commitment: sdk.hubLaunchCommitment(request),
+    predictedTokenAddress: predictedToken,
+    activatedTemplate: {
+      status: "active",
+      module,
+      tokenDeployer,
+    },
+    prediction: {
+      module,
+      tokenDeployer,
+    },
+    transaction: {
+      to: hub,
+      data: sdk.encodeHubLaunchCalldata(request),
+      value: "0x0",
+    },
+  };
+
+  const verified = sdk.verifyHubLaunchPreparation(preparation);
+  assert.equal(verified.request.predictedToken, predictedToken);
+  assert.equal(verified.request.templateId, 3n);
+  assert.equal(verified.transaction.to, hub);
+
+  assert.throws(
+    () => sdk.verifyHubLaunchPreparation({
+      ...preparation,
+      activatedTemplate: { ...preparation.activatedTemplate, status: "deprecated" },
+    }),
+    /active template/i,
+  );
+  assert.throws(
+    () => sdk.verifyHubLaunchPreparation({
+      ...preparation,
+      prediction: { ...preparation.prediction, module: factory },
+    }),
+    /module/i,
+  );
+  assert.throws(
+    () => sdk.verifyHubLaunchPreparation({
+      ...preparation,
+      transaction: { ...preparation.transaction, value: "0x1" },
+    }),
+    /zero-value/i,
+  );
+  assert.throws(
+    () => sdk.verifyHubLaunchPreparation({
+      ...preparation,
+      request: { ...preparation.request, symbol: "DRIFT" },
+    }),
+    /commitment/i,
+  );
+});
+
+test("LaunchHub preparation verifies canonical ordering against its explicit quote", () => {
+  const request = sdk.buildHubLaunchRequest({
+    ...sdk.buildHubLaunchDraft({
+      domainId,
+      templateId: 4,
+      version: 3,
+      name: "SPY Clone",
+      symbol: "SPYCLONE",
+      launcher,
+    }),
+    predictedToken: spyOnlyPredictedToken,
+  });
+  const preparation = {
+    version: "launchhub-launch-v1",
+    chainId: 4663,
+    launchHub: hub,
+    request: sdk.serializeHubLaunchRequest(request),
+    commitment: sdk.hubLaunchCommitment(request),
+    predictedTokenAddress: spyOnlyPredictedToken,
+    activatedTemplate: { status: "active", module, tokenDeployer },
+    prediction: { module, tokenDeployer, orderingBound: spy },
+    transaction: {
+      to: hub,
+      data: sdk.encodeHubLaunchCalldata(request),
+      value: "0x0",
+    },
+  };
+
+  assert.equal(
+    sdk.verifyHubLaunchPreparation(preparation).prediction.orderingBound,
+    spy
+  );
+  assert.throws(
+    () => sdk.verifyHubLaunchPreparation({
+      ...preparation,
+      prediction: { module, tokenDeployer }
+    }),
+    /pool ordering/i
+  );
+  assert.throws(
+    () => sdk.verifyHubLaunchPreparation({
+      ...preparation,
+      prediction: {
+        ...preparation.prediction,
+        orderingBound: "0x0000000000000000000000000000000000000000"
+      }
+    }),
+    /ordering bound/i
+  );
+});
 
 test("canonical request normalises metadata, roles, template and salt", () => {
   const request = buildV4LaunchRequest({
@@ -233,4 +424,154 @@ test("HTTP client builds verified fee delivery from the indexed token record", a
   assert.equal(preparation.symbol, "DEGEN");
   assert.equal(preparation.steps.length, 3);
   assert.equal(client.verifyFeeDeliveryPreparation(preparation).version, "v4-fee-delivery");
+});
+
+const hubFeeToken = {
+  protocolVersion: "launchhub-v1",
+  chainId: 4663,
+  contract: "0x04d5D8a61DA0b6548B136412843aDBA55EbeaDE6",
+  sym: "DEGEN",
+  beneficiary: launcher,
+  launchHub: "0x6666666666666666666666666666666666666666",
+  launchRecord: {
+    token: "0x04d5D8a61DA0b6548B136412843aDBA55EbeaDE6",
+    module: "0x7777777777777777777777777777777777777777",
+    domainId: `0x${"8".repeat(64)}`,
+    templateId: "2",
+    version: "1"
+  },
+  activatedTemplate: {
+    status: "active",
+    module: "0x7777777777777777777777777777777777777777",
+    lpLocker: "0x8888888888888888888888888888888888888888"
+  }
+};
+
+test("LaunchHub fee claim preparation contains exactly one destination-bound transaction", () => {
+  const preparation = sdk.buildHubFeeClaimPreparation(hubFeeToken);
+  assert.equal(preparation.version, "launchhub-fee-claim-v1");
+  assert.equal(preparation.chainId, 4663);
+  assert.equal(preparation.token, hubFeeToken.contract);
+  assert.equal(preparation.beneficiary, launcher);
+  assert.equal(preparation.transaction.to, hubFeeToken.activatedTemplate.lpLocker);
+  assert.equal(preparation.transaction.value, "0x0");
+  assert.equal(decodeFunctionData({
+    abi: sdk.HUB_FEE_CLAIMER_ABI,
+    data: preparation.transaction.data
+  }).functionName, "claimFees");
+  assert.deepEqual(
+    decodeFunctionData({
+      abi: sdk.HUB_FEE_CLAIMER_ABI,
+      data: preparation.transaction.data
+    }).args,
+    [hubFeeToken.contract]
+  );
+  assert.equal(sdk.verifyHubFeeClaimPreparation(preparation).template.status, "active");
+});
+
+test("LaunchHub fee claim fails closed on untrusted or inconsistent indexed template state", () => {
+  assert.throws(
+    () => sdk.buildHubFeeClaimPreparation({ ...hubFeeToken, protocolVersion: "v4" }),
+    /indexed LaunchHub token/i
+  );
+  assert.throws(
+    () => sdk.buildHubFeeClaimPreparation({
+      ...hubFeeToken,
+      activatedTemplate: { ...hubFeeToken.activatedTemplate, status: "pending" }
+    }),
+    /activated/i
+  );
+  assert.throws(
+    () => sdk.buildHubFeeClaimPreparation({
+      ...hubFeeToken,
+      launchRecord: {
+        ...hubFeeToken.launchRecord,
+        module: "0x9999999999999999999999999999999999999999"
+      }
+    }),
+    /module/i
+  );
+  assert.throws(
+    () => sdk.buildHubFeeClaimPreparation({
+      ...hubFeeToken,
+      activatedTemplate: { ...hubFeeToken.activatedTemplate, lpLocker: undefined },
+      lpLocker: "0x9999999999999999999999999999999999999999"
+    }),
+    /LP locker/i
+  );
+
+  const preparation = sdk.buildHubFeeClaimPreparation(hubFeeToken);
+  assert.throws(
+    () => sdk.verifyHubFeeClaimPreparation({
+      ...preparation,
+      transaction: {
+        ...preparation.transaction,
+        to: "0x9999999999999999999999999999999999999999"
+      }
+    }),
+    /target/i
+  );
+  assert.throws(
+    () => sdk.verifyHubFeeClaimPreparation({
+      ...preparation,
+      transaction: { ...preparation.transaction, data: "0x1234" }
+    }),
+    /calldata/i
+  );
+  assert.throws(
+    () => sdk.verifyHubFeeClaimPreparation({
+      ...preparation,
+      transaction: { ...preparation.transaction, value: "0x1" }
+    }),
+    /transfer value/i
+  );
+});
+
+test("deprecated LaunchHub templates remain claimable for tokens launched while activated", () => {
+  const preparation = sdk.buildHubFeeClaimPreparation({
+    ...hubFeeToken,
+    activatedTemplate: { ...hubFeeToken.activatedTemplate, status: "deprecated" }
+  });
+  assert.equal(preparation.template.status, "deprecated");
+  assert.equal(preparation.transaction.to, hubFeeToken.activatedTemplate.lpLocker);
+  assert.equal(sdk.verifyHubFeeClaimPreparation(preparation).template.status, "deprecated");
+});
+
+test("V1 and V2 fee claims retain their exact source Hub, template version, and locker", () => {
+  const v1 = sdk.buildHubFeeClaimPreparation(hubFeeToken);
+  const v2Token = {
+    ...hubFeeToken,
+    launchHub: "0x9999999999999999999999999999999999999999",
+    launchRecord: {
+      ...hubFeeToken.launchRecord,
+      version: "2",
+      module: "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    },
+    activatedTemplate: {
+      ...hubFeeToken.activatedTemplate,
+      module: "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      lpLocker: "0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+    }
+  };
+  const v2 = sdk.buildHubFeeClaimPreparation(v2Token);
+
+  assert.equal(v1.launchHub, hubFeeToken.launchHub);
+  assert.equal(v1.launchRecord.version, "1");
+  assert.equal(v1.transaction.to, hubFeeToken.activatedTemplate.lpLocker);
+  assert.equal(v2.launchHub, v2Token.launchHub);
+  assert.equal(v2.launchRecord.version, "2");
+  assert.equal(v2.transaction.to, v2Token.activatedTemplate.lpLocker);
+});
+
+test("HTTP client selects the one-transaction LaunchHub claim from indexed provenance", async () => {
+  const client = createDegenHoodClient({
+    baseUrl: "https://api.degenhood.fun",
+    fetch: async () => new Response(JSON.stringify(hubFeeToken), {
+      status: 200, headers: { "content-type": "application/json" }
+    })
+  });
+  const preparation = await client.getFeeDeliveryPreparation(hubFeeToken.contract);
+  assert.equal(preparation.version, "launchhub-fee-claim-v1");
+  assert.equal(preparation.transaction.to, hubFeeToken.activatedTemplate.lpLocker);
+  assert.equal(client.verifyFeeDeliveryPreparation(preparation).token, hubFeeToken.contract);
 });

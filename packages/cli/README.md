@@ -2,15 +2,20 @@
 
 Thin, non-custodial wrapper around `@degenhood/sdk` and the authenticated DegenHood launch-preparation endpoint.
 
+> **Compatibility:** The published `0.1.x` line is legacy v4-factory tooling. It does not implement
+> the current production LaunchHub integration. Do not use it to construct a new production launch.
+> See [`COMPATIBILITY.md`](../../COMPATIBILITY.md).
+
 ## Install
 
 ```sh
-npm install @degenhood/cli@0.1.0
-npx @degenhood/cli@0.1.0 --help
+npm install @degenhood/cli@0.1.0-canary.0
+npx @degenhood/cli@0.1.0-canary.0 --help
 ```
 
-Version `0.1.0` is the first stable package release and is published under the `latest` dist-tag.
-Access to the production launch-preparation API remains controlled and wallet-allowlisted.
+Version `0.1.0-canary.0` is a controlled early-access canary prerelease published under the
+`canary` dist-tag. These commands become available
+only after the DegenHood operator publishes the reviewed package.
 
 Copy [`examples/developer/token.example.json`](../../examples/developer/token.example.json) to
 start. Template 2 is the default, and omitted role fields safely resolve to the creator wallet.

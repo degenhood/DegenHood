@@ -13,37 +13,73 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  verify:
+  javascript:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 30
 
     steps:
-      - name: Check out source
+      - name: Check out reviewed source
         uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10
         with:
+          fetch-depth: 0
           persist-credentials: false
+          submodules: recursive
 
       - name: Set up Node.js
         uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38
         with:
           node-version: "22.14.0"
-          cache: npm
-          cache-dependency-path: |
-            packages/sdk/package-lock.json
-            packages/cli/package-lock.json
 
-      - name: Install dependencies
+      - name: Install JavaScript dependencies
         run: |
           npm ci --prefix packages/sdk
           npm ci --prefix packages/cli
-
-      - name: Test
-        run: npm test
 
       - name: Audit production dependencies
         run: |
           npm audit --prefix packages/sdk --omit=dev --audit-level=high
           npm audit --prefix packages/cli --omit=dev --audit-level=high
 
-      - name: Verify package release boundary
-        run: npm run verify:packages
+      - name: Verify exported public core
+        run: ./scripts/verify-public-core.sh
+
+  contracts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+
+    steps:
+      - name: Check out reviewed source
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10
+        with:
+          persist-credentials: false
+          submodules: recursive
+
+      - name: Set up Foundry
+        uses: foundry-rs/foundry-toolchain@b00af27efadbc7b4ca8b82abbd903b17cc874d2a
+        with:
+          version: v1.7.1
+
+      - name: Verify frozen v4 contracts
+        working-directory: contracts-v4
+        run: |
+          forge fmt --check
+          forge build
+          forge test
+
+      - name: Verify public LaunchHub contracts
+        working-directory: contracts-hub
+        run: |
+          forge fmt --check
+          forge build
+          forge test --match-path 'test/production/*.t.sol'
+
+      - name: Install pinned Degenetics dependencies
+        working-directory: contracts-degenetics
+        run: ./scripts/install-dependencies.sh
+
+      - name: Verify deployed Degenetics source package
+        working-directory: contracts-degenetics
+        run: |
+          forge fmt --check
+          forge build
+          forge test

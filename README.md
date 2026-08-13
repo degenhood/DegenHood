@@ -1,132 +1,144 @@
-# DegenHood developer toolkit
+<div align="center">
+
+# DegenHood
+
+**Launch. Lock. Align.**
+
+The verified public core for DegenHood on Robinhood Chain.
+
+[Website](https://degenhood.fun) · [Explore](https://degenhood.fun/explore) ·
+[Protocol](https://degenhood.fun/protocol) · [Documentation](docs/README.md) ·
+[Security](SECURITY.md)
 
 [![CI](https://github.com/degenhood/DegenHood/actions/workflows/ci.yml/badge.svg)](https://github.com/degenhood/DegenHood/actions/workflows/ci.yml)
 [![CodeQL](https://github.com/degenhood/DegenHood/actions/workflows/codeql.yml/badge.svg)](https://github.com/degenhood/DegenHood/actions/workflows/codeql.yml)
-[![SDK on npm](https://img.shields.io/npm/v/@degenhood/sdk?label=%40degenhood%2Fsdk)](https://www.npmjs.com/package/@degenhood/sdk)
-[![CLI on npm](https://img.shields.io/npm/v/@degenhood/cli?label=%40degenhood%2Fcli)](https://www.npmjs.com/package/@degenhood/cli)
+[![Robinhood Chain](https://img.shields.io/badge/Robinhood_Chain-4663-C7FF00)](https://robinhoodchain.blockscout.com)
+[![License](https://img.shields.io/badge/license-mixed-111111)](LICENSING.md)
 
-Public developer tooling for preparing and verifying DegenHood token launches on Robinhood Chain
-(chain ID `4663`).
+</div>
 
-This repository is intentionally limited to the public integration surface. It does not contain
-the production application, deployment configuration, contract source, operator procedures, or
-credentials.
+---
 
-## Packages
+DegenHood is a token-launch and alignment protocol. Launches create their full fixed supply into
+permanently locked liquidity. Trading fees are routed by immutable on-chain rules to creators,
+protocol operations, buybacks, burns and holder-aligned rewards.
 
-| Package | Purpose |
-| --- | --- |
-| [`@degenhood/sdk`](packages/sdk) | Build requests, call the preparation API, verify returned calldata, and inspect indexed launches |
-| [`@degenhood/cli`](packages/cli) | Prepare, verify, simulate, and inspect launches from a terminal |
+This repository exists for three things:
 
-Both packages are MIT licensed and require Node.js 20 or newer.
+1. **Verify** the contracts, production addresses and economic rules.
+2. **Build** against the public SDK, CLI and HTTP contract without trusting a hosted interface.
+3. **Review** Degenetics and the protocol assumptions through a clear due-diligence record.
 
-```sh
-npm install @degenhood/sdk@0.1.0
-npm install @degenhood/cli@0.1.0
+It contains no private keys, signing service, operator runbooks or autonomous launch infrastructure.
+
+## Production at a glance
+
+| Surface | Status | Reference |
+| --- | --- | --- |
+| Degen LaunchHub | Production | [`contracts-hub`](contracts-hub) |
+| `$DEGEN` and frozen v4 stack | Production · frozen | [`contracts-v4`](contracts-v4) |
+| Degenetics · DegenHood Degens | Production | [`contracts-degenetics`](contracts-degenetics) |
+| SDK / CLI / OpenAPI `0.1.x` | Legacy v4-factory compatibility | [`packages`](packages) · [`openapi`](openapi) |
+
+Always identify contracts by full address and chain ID—not by a name, symbol or screenshot. The
+canonical production graph is maintained in [`docs/deployments.md`](docs/deployments.md) with
+direct Blockscout links and a reconciliation block.
+
+## How the system fits together
+
+```mermaid
+flowchart LR
+    U["Creator or trader"]
+    W["Wallet"]
+    API["Public API contract"]
+    HUB["Degen LaunchHub"]
+    MOD["Reviewed launch modules"]
+    POOL["Locked liquidity"]
+    FEES["Creator + protocol fee routes"]
+    DEGEN["$DEGEN alignment"]
+    DEGENS["Degenetics backed packs"]
+
+    U --> W
+    API -. "unsigned preparation" .-> W
+    W -->|"user-authorised transaction"| HUB
+    W -->|"mint / activate / claim / redeem"| DEGENS
+    HUB --> MOD --> POOL
+    POOL --> FEES --> DEGEN
+    FEES --> DEGENS
 ```
 
-## SDK quickstart
+The released SDK and CLI prepare, verify and simulate unsigned **legacy v4-factory** launch intent.
+They do not yet represent the current production LaunchHub path. They do not accept private keys,
+sign, broadcast, deploy or move funds.
 
-```js
-import {
-  createDegenHoodClient,
-  verifyLaunchPreparation
-} from "@degenhood/sdk";
+## Repository map
 
-const client = createDegenHoodClient({
-  baseUrl: "https://api.degenhood.fun",
-  accessToken: process.env.DEGENHOOD_ACCESS_TOKEN
-});
-
-const preparation = await client.prepareLaunch({
-  name: "Example Hood",
-  symbol: "EXAMPLE",
-  launcher: account,
-  tokenAdmin: account,
-  feeAdmin: account,
-  beneficiary: account,
-  templateId: 2
-});
-
-verifyLaunchPreparation(preparation);
+```text
+contracts-hub/       LaunchHub and reviewed launch modules
+contracts-v4/        Frozen $DEGEN / v4 protocol stack
+contracts-degenetics/ Exact deployed Degenetics source and public tests
+packages/sdk/        Unsigned preparation and verification SDK
+packages/cli/        Terminal interface to the same safe workflow
+openapi/             Public HTTP contract
+examples/developer/  Minimal integrations
+docs/                Architecture, economics, deployments and diligence
 ```
 
-The response contains a predicted `...de6` token address and an unsigned, zero-value transaction.
-The SDK does not accept wallet keys, sign transactions, pay gas, or broadcast.
+Start with:
 
-See the complete external-wallet flow in
-[`examples/developer/prepare-launch.ts`](examples/developer/prepare-launch.ts).
-Production launch preparation is currently wallet-allowlisted.
+- [`DUE_DILIGENCE.md`](DUE_DILIGENCE.md) for the evidence index and known limitations;
+- [`ARCHITECTURE.md`](ARCHITECTURE.md) for trust boundaries and transaction paths;
+- [`docs/deployments.md`](docs/deployments.md) for production identities;
+- [`SECURITY.md`](SECURITY.md) before testing or reporting a vulnerability;
+- [`AGENTS.md`](AGENTS.md) when using a coding agent in this repository.
 
-## CLI quickstart
+## Verify locally
 
-Start with [`examples/developer/token.example.json`](examples/developer/token.example.json), then:
-
-```sh
-export DEGENHOOD_ACCESS_TOKEN="your-short-lived-token"
-
-npx @degenhood/cli@0.1.0 launch prepare \
-  --file examples/developer/token.example.json \
-  --account 0xYourCreatorWallet \
-  > preparation.json
-
-npx @degenhood/cli@0.1.0 launch verify --file preparation.json
-```
-
-Optional simulation uses `eth_estimateGas` and `eth_call` only:
-
-```sh
-npx @degenhood/cli@0.1.0 launch simulate \
-  --file preparation.json \
-  --rpc https://rpc.mainnet.chain.robinhood.com
-```
-
-Review the full command reference in [`packages/cli/README.md`](packages/cli/README.md).
-
-## API and agent integration
-
-- [`openapi/degenhood-v1.yaml`](openapi/degenhood-v1.yaml) documents the public preparation API.
-- [`skills/prepare-degenhood-launch`](skills/prepare-degenhood-launch) is a portable agent skill
-  for the safe prepare → verify → simulate workflow.
-
-To install the skill for a local Codex setup:
-
-```sh
-mkdir -p ~/.codex/skills
-cp -R skills/prepare-degenhood-launch ~/.codex/skills/
-```
-
-The skill fails closed and explicitly prohibits requesting keys, signing, deploying, moving funds,
-or broadcasting.
-
-## Verification
+Prerequisites: Node.js 22 and Foundry 1.7.x.
 
 ```sh
 npm ci --prefix packages/sdk
 npm ci --prefix packages/cli
-npm test
-npm run verify:packages
+
+npm test --prefix packages/sdk
+npm test --prefix packages/cli
+
+(cd contracts-v4 && forge fmt --check && forge test)
+(cd contracts-hub && forge fmt --check && forge test)
+(cd contracts-degenetics && ./scripts/install-dependencies.sh && forge fmt --check && forge test)
 ```
 
-`verify:packages` creates the exact npm tarballs, checks their contents against an allowlist, then
-installs and exercises them in an empty temporary project.
+The public CI runs exclusively from this repository. It must not depend on private files, private
+submodules or secret-backed services.
 
-Run the optional production read-only smoke check with a known indexed token:
+## SDK and CLI compatibility
 
-```sh
-DEGENHOOD_API_URL=https://api.degenhood.fun \
-DEGENHOOD_TOKEN=0xTokenAddress \
-npm run smoke:read-only
-```
+The `0.1.x` package line is retained for historical v4-factory integrations. Do not use it to
+construct a new production LaunchHub launch. A future package will be described as current only when
+its public compatibility record proves the production hub, domain, activated templates, request
+commitment, predicted address and exact direct zero-value calldata.
 
-No authentication is used unless the explicit preparation-smoke flag is enabled.
+Until then, use the hosted DegenHood interface for current LaunchHub launches and use the public
+packages only for documented legacy/read-only workflows. See `COMPATIBILITY.md` before integrating.
 
-## Security
+## Security and change control
 
-Please report vulnerabilities privately through [GitHub Security Advisories](SECURITY.md). Never
-include live keys, access tokens, funded-wallet signatures, or credentials in an issue.
+The deployed v4 source is frozen. Any proposed contract change requires a fresh security review and
+is not a routine contribution. Report vulnerabilities privately through
+[GitHub Security Advisories](SECURITY.md); never post a live exploit or credential in an issue.
 
-## License
+## Licensing
 
-[MIT](LICENSE)
+First-party public code is MIT licensed and open to public pull requests. Documentation is licensed
+separately under CC BY 4.0. DegenHood brand assets are not granted for reuse by either licence. Read
+[`LICENSING.md`](LICENSING.md) before copying or modifying material.
+
+`DegenHood`, `$DEGEN`, associated logos and character artwork are not licensed as trademarks by the
+software licences. See [`TRADEMARKS.md`](TRADEMARKS.md).
+
+## Risk notice
+
+Smart contracts, tokens and liquidity positions involve substantial risk. Transactions are
+irreversible and token prices may be highly volatile. Nothing in this repository is financial,
+legal or investment advice. Review the source, on-chain state and current product disclosures before
+interacting.

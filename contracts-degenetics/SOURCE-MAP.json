@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "sourceId": "degenetics-contracts",
+  "sourceDescription": "Private canonical source for the deployed Degenetics contract graph",
+  "destinationRoot": "contracts-degenetics",
+  "dependencies": [
+    {
+      "path": "lib/forge-std",
+      "repository": "https://github.com/foundry-rs/forge-std.git",
+      "commit": "bf647bd6046f2f7da30d0c2bf435e5c76a780c1b"
+    },
+    {
+      "path": "lib/openzeppelin-contracts",
+      "repository": "https://github.com/OpenZeppelin/openzeppelin-contracts.git",
+      "commit": "dbb6104ce834628e473d2173bbc9d47f81a9eec3"
+    }
+  ],
+  "files": [
+    {
+      "path": "src/DegenhoodDegens.sol",
+      "commit": "72c53f5a78eed38fd5d51d9e6e9f97f520eaca9b"
+    },
+    {
+      "path": "src/HoodConductor.sol",
+      "commit": "98f6d5324ed7c7e4995af882ca0cc57d4da47e09"
+    },
+    {
+      "path": "src/HoodFeeFlusher.sol",
+      "commit": "aec95a56e06e1ed013ac2bd80c6cdf8359cfac66"
+    },
+    {
+      "path": "src/HoodFeeForwarder.sol",
+      "commit": "86595b4b8bb7d96751cb7410864443cbfcccf146"
+    },
+    {
+      "path": "src/V4PriceSource.sol",
+      "commit": "27c7a341de5d1fff2e627425763f8685a34f45f9"
+    },
+    {
+      "path": "src/interfaces/IEntropySource.sol",
+      "commit": "27c7a341de5d1fff2e627425763f8685a34f45f9"
+    },
+    {
+      "path": "src/interfaces/IPriceSource.sol",
+      "commit": "27c7a341de5d1fff2e627425763f8685a34f45f9"
+    },
+    {
+      "path": "test/DegenhoodDegens.t.sol",
+      "commit": "72c53f5a78eed38fd5d51d9e6e9f97f520eaca9b"
+    },
+    {
+      "path": "test/DistributionEpoch.t.sol",
+      "commit": "72c53f5a78eed38fd5d51d9e6e9f97f520eaca9b"
+    },
+    {
+      "path": "test/EdgeFuzz.t.sol",
+      "commit": "72c53f5a78eed38fd5d51d9e6e9f97f520eaca9b"
+    },
+    {
+      "path": "test/FeeSourceEvents.t.sol",
+      "commit": "72c53f5a78eed38fd5d51d9e6e9f97f520eaca9b"
+    },
+    {
+      "path": "test/HoodConductor.t.sol",
+      "commit": "98f6d5324ed7c7e4995af882ca0cc57d4da47e09"
+    },
+    {
+      "path": "test/HoodFeeFlusher.t.sol",
+      "commit": "aec95a56e06e1ed013ac2bd80c6cdf8359cfac66"
+    },
+    {
+      "path": "test/HoodFeeForwarder.t.sol",
+      "commit": "72c53f5a78eed38fd5d51d9e6e9f97f520eaca9b"
+    }
+  ]
+}

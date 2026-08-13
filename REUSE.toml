@@ -1,0 +1,43 @@
+version = 1
+
+# This file is exported to the public repository root as REUSE.toml.
+# Later matching annotations override the default software licence.
+
+[[annotations]]
+path = "**"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 DegenHood contributors"
+SPDX-License-Identifier = "MIT"
+
+[[annotations]]
+path = "LICENSES/LicenseRef-DCO-1.1.txt"
+precedence = "override"
+SPDX-FileCopyrightText = "2004, 2006 The Linux Foundation and its contributors"
+SPDX-License-Identifier = "LicenseRef-DCO-1.1"
+
+[[annotations]]
+path = [
+  "README.md",
+  "AGENTS.md",
+  "ARCHITECTURE.md",
+  "COMPATIBILITY.md",
+  "CONTRIBUTING.md",
+  "DUE_DILIGENCE.md",
+  "LICENSING.md",
+  "NOTICE.md",
+  "SECURITY.md",
+  "THIRD_PARTY_NOTICES.md",
+  "TRADEMARKS.md",
+  "CODE_OF_CONDUCT.md",
+  "docs/**",
+  "openapi/**",
+  "examples/**/*.md",
+  "packages/**/*.md",
+  "contracts-degenetics/**/*.md",
+  "contracts-hub/**/*.md",
+  "contracts-v4/**/*.md",
+  "skills/**/*.md"
+]
+precedence = "override"
+SPDX-FileCopyrightText = "2026 DegenHood contributors"
+SPDX-License-Identifier = "CC-BY-4.0"

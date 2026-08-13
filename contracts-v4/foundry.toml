@@ -1,0 +1,33 @@
+[profile.default]
+src = "src"
+test = "test"
+script = "script"
+out = "out"
+cache_path = "cache"
+libs = ["lib"]
+auto_detect_solc = true
+evm_version = "cancun"
+optimizer = true
+optimizer_runs = 20_000
+via_ir = true
+bytecode_hash = "none"
+cbor_metadata = false
+
+[fmt]
+line_length = 100
+number_underscore = "thousands"
+sort_imports = true
+tab_width = 4
+
+[rpc_endpoints]
+robinhood = "${ROBINHOOD_RPC_URL}"
+
+# Reproducible high-assurance profile used for release evidence. The default profile remains fast
+# enough for local iteration; release verification runs `FOUNDRY_PROFILE=security forge test`.
+[profile.security.fuzz]
+runs = 20_000
+seed = "0x444547454e484f4f442d56342d4641424c452d352d323032362d30372d3134"
+
+[profile.security.invariant]
+runs = 1_024
+depth = 256

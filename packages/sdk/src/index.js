@@ -32,6 +32,58 @@ export const V4_FACTORY_ABI = [{
   outputs: []
 }];
 
+export const HUB_LAUNCH_REQUEST = {
+  name: "request",
+  type: "tuple",
+  components: [
+    { name: "domainId", type: "bytes32" },
+    { name: "templateId", type: "uint256" },
+    { name: "version", type: "uint32" },
+    { name: "launcher", type: "address" },
+    { name: "tokenAdmin", type: "address" },
+    { name: "feeAdmin", type: "address" },
+    { name: "beneficiary", type: "address" },
+    { name: "userSalt", type: "bytes32" },
+    { name: "name", type: "string" },
+    { name: "symbol", type: "string" },
+    { name: "contractURI", type: "string" },
+    { name: "imageURI", type: "string" },
+    { name: "predictedToken", type: "address" },
+    { name: "launchData", type: "bytes" },
+  ],
+};
+
+export const HUB_LAUNCH_ABI = [{
+  type: "function",
+  name: "launch",
+  stateMutability: "nonpayable",
+  inputs: [HUB_LAUNCH_REQUEST],
+  outputs: [{
+    name: "record",
+    type: "tuple",
+    components: [
+      { name: "launchId", type: "uint256" },
+      { name: "token", type: "address" },
+      { name: "launcher", type: "address" },
+      { name: "tokenAdmin", type: "address" },
+      { name: "feeAdmin", type: "address" },
+      { name: "beneficiary", type: "address" },
+      { name: "domainId", type: "bytes32" },
+      { name: "templateId", type: "uint256" },
+      { name: "version", type: "uint32" },
+      { name: "module", type: "address" },
+      { name: "tokenDeployer", type: "address" },
+      { name: "poolId", type: "bytes32" },
+      { name: "positionId", type: "uint256" },
+      { name: "configHash", type: "bytes32" },
+      { name: "manifestHash", type: "bytes32" },
+      { name: "metadataHash", type: "bytes32" },
+      { name: "launchDataHash", type: "bytes32" },
+      { name: "kernelVersion", type: "bytes32" },
+    ],
+  }],
+}];
+
 export const V4_FEE_DELIVERY_ABIS = {
   collect: [{
     type: "function", name: "collectRewards", stateMutability: "nonpayable",
@@ -49,6 +101,14 @@ export const V4_FEE_DELIVERY_ABIS = {
     outputs: [{ name: "amount", type: "uint256" }]
   }]
 };
+
+export const HUB_FEE_CLAIMER_ABI = [{
+  type: "function",
+  name: "claimFees",
+  stateMutability: "nonpayable",
+  inputs: [{ name: "token", type: "address" }],
+  outputs: [{ name: "beneficiaryWethDelivered", type: "uint256" }]
+}];
 
 const canonicalSalt = (value = ZERO_BYTES32) => {
   const hex = String(value).replace(/^0x/i, "");
@@ -104,6 +164,181 @@ export function buildV4LaunchRequest({
 export function serializeV4LaunchRequest(request) {
   const canonical = buildV4LaunchRequest(request);
   return { ...canonical, templateId: canonical.templateId.toString() };
+}
+
+const hubBytes = (value = "0x", label = "launchData") => {
+  const bytes = String(value || "0x");
+  if (!/^0x(?:[0-9a-fA-F]{2})*$/.test(bytes)) {
+    throw new Error(`${label} must be even-length hex bytes`);
+  }
+  return bytes.toLowerCase();
+};
+
+const hubRole = (value, label) => {
+  if (!ADDRESS.test(value || "") || BigInt(value) === 0n) {
+    throw new Error(`${label} must be a valid nonzero address`);
+  }
+  return value;
+};
+
+export function buildHubLaunchDraft({
+  domainId,
+  version = 1,
+  launchData = "0x",
+  ...input
+} = {}) {
+  if (!BYTES32.test(domainId || "") || BigInt(domainId) === 0n) {
+    throw new Error("domainId must be a nonzero bytes32");
+  }
+  const canonicalVersion = Number(version);
+  if (!Number.isSafeInteger(canonicalVersion) || canonicalVersion < 1 || canonicalVersion > 0xffffffff) {
+    throw new Error("template version must be a positive uint32");
+  }
+  const base = buildV4LaunchRequest(input);
+  return {
+    domainId: domainId.toLowerCase(),
+    templateId: base.templateId,
+    version: canonicalVersion,
+    launcher: hubRole(base.launcher, "launcher"),
+    tokenAdmin: hubRole(base.tokenAdmin, "tokenAdmin"),
+    feeAdmin: hubRole(base.feeAdmin, "feeAdmin"),
+    beneficiary: hubRole(base.beneficiary, "beneficiary"),
+    userSalt: base.userSalt,
+    name: base.name,
+    symbol: base.symbol,
+    contractURI: base.contractURI,
+    imageURI: base.imageURI,
+    launchData: hubBytes(launchData),
+  };
+}
+
+export function hubMetadataHash(request) {
+  const draft = buildHubLaunchDraft(request);
+  return keccak256(encodeAbiParameters(
+    [{ type: "string" }, { type: "string" }, { type: "string" }, { type: "string" }],
+    [draft.name, draft.symbol, draft.contractURI, draft.imageURI],
+  ));
+}
+
+export function hubLaunchCommitment(request) {
+  const draft = buildHubLaunchDraft(request);
+  return keccak256(encodeAbiParameters(
+    [
+      { type: "bytes32" },
+      { type: "uint256" },
+      { type: "uint32" },
+      { type: "address" },
+      { type: "address" },
+      { type: "address" },
+      { type: "address" },
+      { type: "bytes32" },
+      { type: "bytes32" },
+      { type: "bytes32" },
+    ],
+    [
+      draft.domainId,
+      draft.templateId,
+      draft.version,
+      draft.launcher,
+      draft.tokenAdmin,
+      draft.feeAdmin,
+      draft.beneficiary,
+      draft.userSalt,
+      hubMetadataHash(draft),
+      keccak256(draft.launchData),
+    ],
+  ));
+}
+
+export function buildHubLaunchRequest({ predictedToken, ...input } = {}) {
+  const draft = buildHubLaunchDraft(input);
+  return {
+    ...draft,
+    predictedToken: hubRole(predictedToken, "predictedToken"),
+  };
+}
+
+export function serializeHubLaunchRequest(request) {
+  const canonical = buildHubLaunchRequest(request);
+  return { ...canonical, templateId: canonical.templateId.toString() };
+}
+
+export function encodeHubLaunchCalldata(request) {
+  const canonical = buildHubLaunchRequest(request);
+  return encodeFunctionData({
+    abi: HUB_LAUNCH_ABI,
+    functionName: "launch",
+    args: [canonical],
+  });
+}
+
+export function verifyHubLaunchPreparation(preparation) {
+  if (!preparation || preparation.version !== "launchhub-launch-v1") {
+    throw new Error("unsupported LaunchHub launch preparation version");
+  }
+  if (Number(preparation.chainId) !== ROBINHOOD_CHAIN_ID) {
+    throw new Error(`LaunchHub preparation must target Robinhood Chain ${ROBINHOOD_CHAIN_ID}`);
+  }
+  const launchHub = hubRole(preparation.launchHub, "LaunchHub");
+  const request = buildHubLaunchRequest(preparation.request);
+  const commitment = hubLaunchCommitment(request);
+  if (String(preparation.commitment || "").toLowerCase() !== commitment) {
+    throw new Error("LaunchHub request commitment mismatch");
+  }
+  const predictedTokenAddress = hubRole(
+    preparation.predictedTokenAddress,
+    "predicted token address",
+  );
+  if (request.predictedToken.toLowerCase() !== predictedTokenAddress.toLowerCase()) {
+    throw new Error("LaunchHub predicted token does not match request");
+  }
+  if (!predictedTokenAddress.toLowerCase().endsWith("de6")) {
+    throw new Error("LaunchHub predicted token does not satisfy the DegenHood vanity rule");
+  }
+  const orderingBound = hubRole(
+    preparation.prediction?.orderingBound || ROBINHOOD_WETH,
+    "prediction ordering bound",
+  );
+  if (BigInt(predictedTokenAddress) >= BigInt(orderingBound)) {
+    throw new Error("LaunchHub predicted token does not satisfy canonical pool ordering");
+  }
+  if (preparation.activatedTemplate?.status !== "active") {
+    throw new Error("LaunchHub launch requires an active template");
+  }
+  const activeModule = hubRole(preparation.activatedTemplate.module, "activated module");
+  const activeDeployer = hubRole(
+    preparation.activatedTemplate.tokenDeployer,
+    "activated token deployer",
+  );
+  const predictedModule = hubRole(preparation.prediction?.module, "prediction module");
+  const predictedDeployer = hubRole(
+    preparation.prediction?.tokenDeployer,
+    "prediction token deployer",
+  );
+  if (activeModule.toLowerCase() !== predictedModule.toLowerCase()) {
+    throw new Error("LaunchHub prediction module mismatch");
+  }
+  if (activeDeployer.toLowerCase() !== predictedDeployer.toLowerCase()) {
+    throw new Error("LaunchHub prediction token deployer mismatch");
+  }
+  if (String(preparation.transaction?.to || "").toLowerCase() !== launchHub.toLowerCase()) {
+    throw new Error("LaunchHub transaction target mismatch");
+  }
+  if (String(preparation.transaction?.value || "0x0").toLowerCase() !== "0x0") {
+    throw new Error("LaunchHub launch must be a zero-value transaction");
+  }
+  const data = encodeHubLaunchCalldata(request);
+  if (String(preparation.transaction?.data || "").toLowerCase() !== data.toLowerCase()) {
+    throw new Error("LaunchHub launch calldata mismatch");
+  }
+  return {
+    ...preparation,
+    launchHub,
+    request,
+    commitment,
+    predictedTokenAddress,
+    transaction: { to: launchHub, data, value: "0x0" },
+  };
 }
 
 export function launchRequestDigest(request) {
@@ -274,6 +509,134 @@ export function verifyV4FeeDeliveryPreparation(preparation) {
   return { ...preparation, ...core, earnings, steps: expected };
 }
 
+const positiveIntegerString = (value, label) => {
+  const integer = weiString(value, label);
+  if (BigInt(integer) === 0n) throw new Error(`${label} must be positive`);
+  return integer;
+};
+
+const hubFeeClaimCore = ({
+  token,
+  beneficiary,
+  launchHub,
+  launchRecord = {},
+  activatedTemplate = {}
+}) => {
+  const canonicalToken = feeAddress(token, "token");
+  const canonicalHub = feeAddress(launchHub, "LaunchHub");
+  const recordToken = feeAddress(launchRecord.token, "launch record token");
+  const recordModule = feeAddress(launchRecord.module, "launch record module");
+  const templateModule = feeAddress(activatedTemplate.module, "activated template module");
+  const lpLocker = feeAddress(activatedTemplate.lpLocker, "activated template LP locker");
+  if (recordToken.toLowerCase() !== canonicalToken.toLowerCase()) {
+    throw new Error("launch record token does not match the indexed token");
+  }
+  if (recordModule.toLowerCase() !== templateModule.toLowerCase()) {
+    throw new Error("launch record module does not match the activated template module");
+  }
+  if (!["active", "deprecated"].includes(activatedTemplate.status)) {
+    throw new Error(
+      "LaunchHub fee claim requires a template proven activated for the indexed launch"
+    );
+  }
+  if (!BYTES32.test(launchRecord.domainId || "")) {
+    throw new Error("launch record domainId must be bytes32");
+  }
+  return {
+    token: canonicalToken,
+    beneficiary: feeAddress(beneficiary, "beneficiary"),
+    launchHub: canonicalHub,
+    launchRecord: {
+      token: recordToken,
+      module: recordModule,
+      domainId: launchRecord.domainId.toLowerCase(),
+      templateId: positiveIntegerString(launchRecord.templateId, "templateId"),
+      version: positiveIntegerString(launchRecord.version, "template version")
+    },
+    template: {
+      status: activatedTemplate.status,
+      module: templateModule,
+      lpLocker
+    }
+  };
+};
+
+const hubFeeClaimTransaction = ({ token, template }) => ({
+  to: template.lpLocker,
+  data: encodeFunctionData({
+    abi: HUB_FEE_CLAIMER_ABI,
+    functionName: "claimFees",
+    args: [token]
+  }),
+  value: "0x0"
+});
+
+export function buildHubFeeClaimPreparation(record = {}) {
+  if (record.protocolVersion !== "launchhub-v1") {
+    throw new Error("fee claim requires an indexed LaunchHub token");
+  }
+  if (Number(record.chainId) !== ROBINHOOD_CHAIN_ID) {
+    throw new Error(`fee claim requires Robinhood Chain ${ROBINHOOD_CHAIN_ID}`);
+  }
+  const core = hubFeeClaimCore({
+    token: record.contract,
+    beneficiary: record.roles?.beneficiary || record.beneficiary,
+    launchHub: record.launchHub,
+    launchRecord: record.launchRecord,
+    activatedTemplate: record.activatedTemplate
+  });
+  return {
+    version: "launchhub-fee-claim-v1",
+    chainId: ROBINHOOD_CHAIN_ID,
+    token: core.token,
+    symbol: String(record.sym || record.symbol || "").toUpperCase(),
+    beneficiary: core.beneficiary,
+    launchHub: core.launchHub,
+    launchRecord: core.launchRecord,
+    template: core.template,
+    transaction: hubFeeClaimTransaction(core)
+  };
+}
+
+export function verifyHubFeeClaimPreparation(preparation) {
+  if (!preparation || preparation.version !== "launchhub-fee-claim-v1") {
+    throw new Error("unsupported LaunchHub fee claim preparation version");
+  }
+  if (Number(preparation.chainId) !== ROBINHOOD_CHAIN_ID) {
+    throw new Error(`fee claim must target Robinhood Chain ${ROBINHOOD_CHAIN_ID}`);
+  }
+  const core = hubFeeClaimCore({
+    token: preparation.token,
+    beneficiary: preparation.beneficiary,
+    launchHub: preparation.launchHub,
+    launchRecord: preparation.launchRecord,
+    activatedTemplate: preparation.template
+  });
+  const expected = hubFeeClaimTransaction(core);
+  if (String(preparation.transaction?.to || "").toLowerCase() !== expected.to.toLowerCase()) {
+    throw new Error("fee claim target does not match the indexed activated template");
+  }
+  if (String(preparation.transaction?.value || "0x0").toLowerCase() !== "0x0") {
+    throw new Error("fee claim transaction must not transfer value");
+  }
+  if (String(preparation.transaction?.data || "").toLowerCase() !== expected.data.toLowerCase()) {
+    throw new Error("fee claim calldata does not match the indexed token");
+  }
+  return { ...preparation, ...core, transaction: expected };
+}
+
+const buildFeeDeliveryPreparation = (record) => {
+  if (record?.protocolVersion === "launchhub-v1") return buildHubFeeClaimPreparation(record);
+  return buildV4FeeDeliveryPreparation(record);
+};
+
+const verifyFeeDeliveryPreparation = (preparation) => {
+  if (preparation?.version === "launchhub-fee-claim-v1") {
+    return verifyHubFeeClaimPreparation(preparation);
+  }
+  return verifyV4FeeDeliveryPreparation(preparation);
+};
+
 const bearer = (value) => value ? { authorization: `Bearer ${value}` } : {};
 
 export function createDegenHoodClient({ baseUrl, accessToken = "", fetch: request = globalThis.fetch } = {}) {
@@ -338,10 +701,10 @@ export function createDegenHoodClient({ baseUrl, accessToken = "", fetch: reques
     async getFeeDeliveryPreparation(key, options) {
       if (!key) throw new Error("token key is required");
       const record = await send(`/api/token/${encodeURIComponent(key)}`, options);
-      return buildV4FeeDeliveryPreparation(record);
+      return buildFeeDeliveryPreparation(record);
     },
     verifyPreparation: verifyLaunchPreparation,
-    verifyFeeDeliveryPreparation: verifyV4FeeDeliveryPreparation
+    verifyFeeDeliveryPreparation
   };
 }
 

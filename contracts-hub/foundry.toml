@@ -1,0 +1,34 @@
+[profile.default]
+src = "src"
+test = "test"
+script = "script"
+out = "out"
+cache_path = "cache"
+libs = ["../contracts-v4/lib", "../contracts-v4/src"]
+auto_detect_solc = true
+evm_version = "cancun"
+optimizer = true
+optimizer_runs = 20_000
+via_ir = true
+bytecode_hash = "none"
+cbor_metadata = false
+fs_permissions = [
+    { access = "read", path = "./test/fixtures" },
+    { access = "read", path = "../contracts-v4/out" },
+    { access = "read", path = "../docs/handoffs" },
+    { access = "read", path = "./review" },
+]
+
+[fmt]
+line_length = 100
+number_underscore = "thousands"
+sort_imports = true
+tab_width = 4
+
+[profile.security.fuzz]
+runs = 20_000
+seed = "0x444547454e484f4f442d4855422d4641424c452d312d323032362d30372d3139"
+
+[profile.security.invariant]
+runs = 1_024
+depth = 256
